@@ -15,7 +15,8 @@
     <title>Tweet Academy</title>
 </head>
 <body>
-
+<a href="login.php">login</a>
+<a href="register.php">Register</a>
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
