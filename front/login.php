@@ -8,15 +8,15 @@
     <title>Document</title>
   </head>
   <body class="bg-black 2xl:text-lg	text-sm">
-    <main class="flex flex-col justify-between h-screen">
+    <main class="flex flex-col justify-evenly h-screen ">
       <div class="flex items-center ">
-        <!-- <div class="flex grow-0 shrink-0 basis-1/2"> -->
+        <div class="flex grow-0 shrink-0 basis-1/2">
           <img
             src="img/X_logo_2023_(white).png"
             alt="Logo"
-            class="max-w-full flex grow-0 shrink-0 basis-1/2"
+            class="max-w-full"
           />
-        <!-- </div> -->
+        </div>
         <div class="grow-0 shrink-0 basis-3/6	">
           <!-- <h2>Sign in to</h2> -->
           <form action="" method="POST" class="flex items-center flex-col">
@@ -55,7 +55,7 @@
         </div>
       </div>
       <footer
-        class="flex justify-end items-center border border-solid border-gray-500 h-20"
+        class="flex justify-end items-center border-t border-solid border-gray-500 h-20"
       >
         <p class="mr-20 text-white">© WAC 2024</p>
       </footer>
