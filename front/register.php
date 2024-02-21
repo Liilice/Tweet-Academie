@@ -5,83 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style><?php include "./css/normalize.css"?></style>
     <style><?php include "./css/output.css"?></style>
-    <title>Document</title>
+    <title>REGISTER</title>
   </head>
-  <body class="bg-black text-sm">
-    <main class="container_main flex flex-col justify-between h-screen">
-      <div class="container_login flex items-center">
-        <div class="flex grow-0 shrink-0 basis-1/2">
-          <img
-            src="img/X_logo_2023_(white).png"
-            alt="Logo"
-            class="max-w-full"
-          />
-        </div>
-        <div class="grow-0 shrink-0 basis-1/3">
-          <form action="" method="POST" class="flex items-center flex-col">
-            <input
-              type="email"
-              placeholder="EMAIL"
-              name="email"
-              id="email"
-              class="mb-4 py-2 px-6 bg-black rounded-xl text-white border border-solid border-gray-500 w-4/5"
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="PASSWORD"
-              id="password"
-              class="mb-4 py-2 px-6 bg-black rounded-xl text-white border border-solid border-gray-500 w-4/5"
-              required
-            />
-            <input
-              type="text"
-              name="username"
-              placeholder="USERNAME"
-              id="username"
-              class="mb-4 py-2 px-6 bg-black rounded-xl text-white border border-solid border-gray-500 w-4/5"
-              required
-            />
-            <input
-              type="date"
-              name="birthday"
-              placeholder="BIRTHDAY"
-              id="birthday"
-              class="mb-4 py-2 px-6 bg-black rounded-xl text-white border border-solid border-gray-500 w-4/5"
-              required
-            />
-            <select
-              name="genre"
-              type="genre"
-              class="mb-4 py-2 px-6 bg-black rounded-xl text-white border border-solid border-gray-500 w-4/5"
-            >
-              <option disabled selected size="1">Genre</option>
-              <option value="Homme">Homme</option>
-              <option value="Femme">Femme</option>
-              <option value="Autre">Autre</option>
-            </select>
-            <input
-              type="submit"
-              name="envoyer"
-              class="button mb-6 py-2 px-6 bg-white text-black rounded-xl border border-solid border-gray-500 opacity-50 w-3/5 cursor-pointer"
-              id="submit"
-              value="INSCRIPTION"
-              required
-            />
-            <hr class="mb-6 border border-solid border-gray-500 w-4/5" />
-            <a href="#" class="no-underline text-white mb-4"
-              >ALREADY HAVE AN ACCOUNT ?</a
-            >
+  <body class="bg-black md:flex">
+      <img class="lg:h-[calc(100vh-3rem)] lg:w-[calc(100%/2)]" src="./img/X_logo_2023_(white).png" alt="Logo">
+      <div class="lg:h-[calc(100vh-3rem)] lg:w-[calc(100%/2)] flex flex-col justify-center items-center">
+          <h1 class="text-4xl font-bold text-white pb-7">REGISTER</h1>
+          <form action="register.php" method="post" class="flex flex-col space-y-4 w-full max-w-md">
+              <input type="email" name="email" placeholder="Email" class="p-2 rounded-md bg-gray-800 text-white">
+              <input type="text" name="username" placeholder="Username" class="p-2 rounded-md bg-gray-800 text-white">
+              <input type="password" name="password" placeholder="Password" class="p-2 rounded-md bg-gray-800 text-white">
+              <input type="date" name="birthday" placeholder="Birthday" class="p-2 rounded-md bg-gray-800 text-white">
+              <select name="genre" type="genre" class="p-2 rounded-md bg-gray-800 text-white">
+                <option disabled selected size="1">Genre</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+                <option value="Autre">Autre</option>
+              </select>
+              <button type="submit" class="p-2 bg-white rounded-md hover:bg-white/80 duration-300">Register</button>
+              <a href="login.php" class="p-2 no-underline text-white border-t border-solid border-gray-500 text-center">Already have an account ?</a>
           </form>
-        </div>
       </div>
-      <footer
-        class="flex justify-end items-center border border-solid border-gray-500 h-20"
-      >
-        <p class="mr-20 text-white">© WAC 2024</p>
-      </footer>
-    </main>
-    <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
+      <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
   </body>
 </html>

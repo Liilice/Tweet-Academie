@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--    <link rel="stylesheet" href="./css/normalize.css">-->
     <style><?php include "./css/normalize.css"?></style>
-<!--    <link rel="stylesheet" href="./css/output.css">-->
     <style><?php include "./css/output.css"?></style>
 
     <!--    POUR UN CSS PERSO-->
@@ -89,6 +87,5 @@
     </div>
 </nav>
 <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
-<!--<script src="../node_modules/flowbite/dist/flowbite.min.js"></script>-->
 </body>
 </html>
