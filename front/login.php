@@ -3,29 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="css/output.css" /> -->
     <style><?php include "./css/normalize.css"?></style>
     <style><?php include "./css/output.css"?></style>
-
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <!-- <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
-      rel="stylesheet"
-    />  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script> -->
     <title>Document</title>
   </head>
-  <body class="bg-black text-sm">
-    <main class="container_main flex flex-col justify-between h-screen">
-      <div class="container_login flex items-center">
-        <div class="flex grow-0 shrink-0 basis-1/2">
+  <body class="bg-black 2xl:text-lg	text-sm">
+    <main class="flex flex-col justify-between h-screen">
+      <div class="flex items-center ">
+        <!-- <div class="flex grow-0 shrink-0 basis-1/2"> -->
           <img
             src="img/X_logo_2023_(white).png"
             alt="Logo"
-            class="max-w-full"
+            class="max-w-full flex grow-0 shrink-0 basis-1/2"
           />
-        </div>
-        <div class="grow-0 shrink-0 basis-1/3">
+        <!-- </div> -->
+        <div class="grow-0 shrink-0 basis-3/6	">
           <!-- <h2>Sign in to</h2> -->
           <form action="" method="POST" class="flex items-center flex-col">
             <input
