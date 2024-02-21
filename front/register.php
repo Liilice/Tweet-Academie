@@ -7,7 +7,8 @@
     <style><?php include "./css/output.css"?></style>
     <title>REGISTER</title>
   </head>
-  <body class="bg-black md:flex">
+  <body class="bg-black h-screen">
+    <main class="md:flex">
       <img class="lg:h-[calc(100vh-3rem)] lg:w-[calc(100%/2)]" src="./img/X_logo_2023_(white).png" alt="Logo">
       <div class="lg:h-[calc(100vh-3rem)] lg:w-[calc(100%/2)] flex flex-col justify-center items-center">
           <h1 class="text-4xl font-bold text-white pb-7">REGISTER</h1>
@@ -26,6 +27,8 @@
               <a href="login.php" class="p-2 no-underline text-white border-t border-solid border-gray-500 text-center">Already have an account ?</a>
           </form>
       </div>
-      <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
+    </main>
+    <footer class="text-white border-t border-solid border-gray-500 text-end pt-2	pr-16">© WAC 2024</footer>
+    <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
   </body>
 </html>
