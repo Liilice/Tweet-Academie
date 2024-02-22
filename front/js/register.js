@@ -1,7 +1,6 @@
 window.onload = function () {
   let submit = document.querySelector("#submit");
   submit.addEventListener("click", (event) => {
-    event.preventDefault();
     let email = document.getElementById("email").value;
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -34,7 +33,7 @@ window.onload = function () {
     if (!password) {
       event.preventDefault();
       document.getElementById("error_password").innerText =
-        "Please enter a password.";
+        "Veuillez remplir le champ";
       document.getElementById("error_password").style.display = "block";
     } else if (password.length < 8 || password.length > 20) {
       event.preventDefault();
