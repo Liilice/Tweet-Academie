@@ -13,7 +13,7 @@
         <img class="md:h-[calc(100vh-3rem)] md:w-[calc(100%/2)] md:left-0 h-[calc(100vh-75vh)] relative left-[calc(100%/2-14%)]" src="./img/X_logo_2023_(white).png" alt="Logo">
         <div class="md:h-[calc(100vh-3rem)] md:w-[calc(100%/2)] flex flex-col justify-center items-center">
             <h1 class="text-4xl font-bold text-white pb-14">LOGIN</h1>
-            <form action="login.php" method="post" class="flex flex-col space-y-4 w-full max-w-md">
+            <form action="../back/signin.php" method="post" class="flex flex-col space-y-4 w-full max-w-md">
               <input type="email" name="email" id="username" placeholder="Email" class="p-2 rounded-md bg-gray-800 text-white">
               <p id="error_username" class="text-red-600"></p>
               <input type="password" name="password" id="password" placeholder="Password" class="p-2 rounded-md bg-gray-800 text-white">
