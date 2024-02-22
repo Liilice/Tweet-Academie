@@ -17,6 +17,7 @@
               <input type="text" name="username" placeholder="Username" class="p-2 rounded-md bg-gray-800 text-white">
               <input type="password" name="password" placeholder="Password" class="p-2 rounded-md bg-gray-800 text-white">
               <input type="date" name="birthday" placeholder="Birthday" class="p-2 rounded-md bg-gray-800 text-white">
+              <input type="text" name="city" placeholder="City" class="p-2 rounded-md bg-gray-800 text-white">
               <select name="genre" type="genre" class="p-2 rounded-md bg-gray-800 text-white">
                 <option disabled selected size="1">Genre</option>
                 <option value="Homme">Homme</option>
