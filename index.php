@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style><?php include "./css/normalize.css"?></style>
-    <style><?php include "./css/output.css"?></style>
+    <style><?php include "./front/css/normalize.css"?></style>
+    <style><?php include "./front/css/output.css"?></style>
 
     <!--    POUR UN CSS PERSO-->
     <!--    <link rel="stylesheet" href="./css/...">-->
-    <script><?php include "./js/script.js"?></script>
     <title>Tweet Academy</title>
 </head>
 <body>
-<a href="./login.php">login</a>
-<a href="./register.php">register</a>
+<a href="./front/login.php">login</a>
+<a href="./front/register.php">register</a>
 <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -85,6 +84,6 @@
         </div>
     </div>
 </nav>
-<script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
+<script><?php include "./node_modules/flowbite/dist/flowbite.min.js"?></script>
 </body>
 </html>
