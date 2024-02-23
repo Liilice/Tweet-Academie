@@ -1,20 +1,3 @@
-<?php
-session_start(); 
-$pdo = require_once("../back/database.php");
-if (!isset($_SESSION['user_id'])) {
-    echo "non connecter";
-}else{
-    $id = $_SESSION['user_id'];
-    $statement_user = $pdo->query("SELECT * FROM user WHERE id = $id;");
-    $user = $statement_user->fetchAll(PDO::FETCH_ASSOC);
-    echo '<pre>';
-    print_r($user);
-    echo '</pre>';
-}
-
-// echo "Bienvenue, " . $_SESSION['user_id'];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,5 +99,34 @@ if (!isset($_SESSION['user_id'])) {
         <button type="button" class="m-auto text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Modifier</button>
     </div>
 <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style><?php include "./css/normalize.css"?></style>
+    <style><?php include "./css/output.css"?></style>
+    <title>Profil</title>
+</head>
+<body>
+    <h1>Profil</h1>
+    <ul>
+        <li>username : <?=$user[0]["username"]?></li>
+        <li>at_user_name : <?=$user[0]["at_user_name"]?></li>
+        <li><img src="<?= $user[0]["profile_picture"]?>" alt="profile_picture"></li>
+        <li><img src="<?= $user[0]["banner"]?>" alt="banner"></li>
+        <li>mail : <?=$user[0]["mail"]?></li>
+        <li>birthdate : <?=$user[0]["birthdate"]?></li>
+        <li>creation_time : <?=$user[0]["creation_time"]?></li>
+        <li>city : <?=$user[0]["city"]?></li>
+
+    </ul>
+
+    <form action="" method="POST">
+        <h1>Editer don profil</h1>
+    </form>
 </body>
 </html>
