@@ -1,12 +1,22 @@
 window.onload = function () {
   let submit = document.querySelector("#submit");
   submit.addEventListener("click", (event) => {
+    let name = document.getElementById("name").value;
     let email = document.getElementById("email").value;
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let birthday = document.getElementById("birthday").value;
     let city = document.getElementById("city").value;
-    let genre = document.getElementById("genre").value;
+    // let genre = document.getElementById("genre").value;
+
+    if (!name) {
+      event.preventDefault();
+      document.getElementById("error_name").innerText =
+        "Veuillez remplir le champ";
+      document.getElementById("error_name").style.display = "block";
+    } else {
+      document.getElementById("error_name").style.display = "none";
+    }
 
     if (!email) {
       event.preventDefault();
@@ -102,13 +112,13 @@ window.onload = function () {
       document.getElementById("error_city").style.display = "none";
     }
 
-    if (genre === "Genre") {
-      event.preventDefault();
-      document.getElementById("error_genre").innerText =
-        "Veuillez choisir un genre";
-      document.getElementById("error_genre").style.display = "block";
-    } else {
-      document.getElementById("error_genre").style.display = "none";
-    }
+    // if (genre === "Genre") {
+    //   event.preventDefault();
+    //   document.getElementById("error_genre").innerText =
+    //     "Veuillez choisir un genre";
+    //   document.getElementById("error_genre").style.display = "block";
+    // } else {
+    //   document.getElementById("error_genre").style.display = "none";
+    // }
   });
 };
