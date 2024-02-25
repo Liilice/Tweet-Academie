@@ -26,13 +26,6 @@
               <p id="error_birthday" class="text-red-600"></p>
               <input type="text" name="city" id="city" placeholder="City" class="p-2 rounded-md bg-gray-800 text-white">
               <p id="error_city" class="text-red-600"></p>
-              <!-- <select name="genre" type="genre" id="genre" class="p-2 rounded-md bg-gray-800 text-white">
-                <option disabled selected size="1">Genre</option>
-                <option value="Homme">Homme</option>
-                <option value="Femme">Femme</option>
-                <option value="Autre">Autre</option>
-              </select>
-              <p id="error_genre" class="text-red-600"></p> -->
               <button type="submit" id="submit" class="p-2 bg-white rounded-md hover:bg-white/80 duration-300">Register</button>
               <a href="login.php" class="p-2 no-underline text-white border-t border-solid border-gray-500 text-center">Already have an account ?</a>
           </form>
