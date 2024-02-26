@@ -7,7 +7,6 @@ window.onload = function () {
     let password = document.getElementById("password").value;
     let birthday = document.getElementById("birthday").value;
     let city = document.getElementById("city").value;
-    // let genre = document.getElementById("genre").value;
 
     if (!name) {
       event.preventDefault();
@@ -111,14 +110,5 @@ window.onload = function () {
     } else {
       document.getElementById("error_city").style.display = "none";
     }
-
-    // if (genre === "Genre") {
-    //   event.preventDefault();
-    //   document.getElementById("error_genre").innerText =
-    //     "Veuillez choisir un genre";
-    //   document.getElementById("error_genre").style.display = "block";
-    // } else {
-    //   document.getElementById("error_genre").style.display = "none";
-    // }
   });
 };
