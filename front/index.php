@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style> <?php include "./css/normalize.css"?></style>
     <style> <?php include "./css/output.css"?></style>
+    <link rel="stylesheet" href="/css/style.css">
     <title>INDEX</title>
 </head>
 <body>
+    <a href="./myaccount.php">compte</a>
 
 
 <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
