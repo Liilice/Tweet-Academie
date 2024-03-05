@@ -3,7 +3,7 @@ $pdo = require_once("database.php");
 if(!empty($_POST["email"])&&!empty($_POST["username"])&&!empty($_POST["password"])&&!empty($_POST["birthday"])&&!empty($_POST["city"])&&!empty($_POST["name"])){
     $name = $_POST["name"];    
     $email = $_POST["email"];
-    $username = $_POST["username"];
+    $username = "@".$_POST["username"];
     $password = $_POST["password"];   
     $birthday = $_POST["birthday"];   
     $city = $_POST["city"];
@@ -16,8 +16,8 @@ if(!empty($_POST["email"])&&!empty($_POST["username"])&&!empty($_POST["password"
         }
         else{
             // realpath(dirname(__FILE__) . '/' .)
-            $absolute_path_avatar = '../front/img/default_avatar.png';
-            $absolute_path_banner = '../front/img/banner.jpg';
+            $absolute_path_avatar = 'X_logo_2023_(white).png';
+            $absolute_path_banner = 'banner.jpg';
             $hash_password = hash("ripemd160", $password."vive le projet tweet_academy");
             $statement_insert = $pdo->prepare("INSERT INTO user(username,at_user_name,profile_picture,banner,mail,password,birthdate,city) VALUES ('$name', '$username', '$absolute_path_avatar', '$absolute_path_banner', '$email', '$hash_password','$birthday', '$city');");
             $statement_insert->execute();

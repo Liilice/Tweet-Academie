@@ -31,21 +31,29 @@
             <div class="menu">
                 <ul>
                     <li>
+                        <i class="fa-solid fa-house"></i>
+                        <a href="./homepage.php">Homepage</a>
+                    </li>
+                    <li>
                         <i class="fas fa-qrcode"></i>
                         <a href="./profil.php">Profil</a>
                     </li>
                     <li>
                         <i class="fas fa-link"></i>
-                        <a href="#">Message</a>
+                        <a href="./message.php">Message</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-bell"></i>
-                        <a href="#">Notification</a>
+                        <a href="./notification.php">Notification</a>
                     </li>
                     <li>
                         <i class="fa-regular fa-pen-to-square"></i>
                         <a href="./edit_profil.php">Editer</a>
                     </li>
+                    <li>
+                        <i class="fa-solid fa-right-from-bracket"></i>                        
+                        <a href="../back/logout.php">Déconnexion</a>
+                    </li>  
                 </ul>
             </div>
         </div>

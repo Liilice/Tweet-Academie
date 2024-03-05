@@ -1,7 +1,7 @@
 <?php
     session_start(); 
     if (!isset($_SESSION['user_id'])) {
-        echo "no session";
+        header("Location : ../front/login.php");
     }else{
         $pdo = require_once("database.php");
         $id = $_SESSION['user_id'];
