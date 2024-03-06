@@ -59,9 +59,9 @@
         </div>
     </nav>
     <?php 
-            require_once("../back/is_login.php");
-            $user = is_login();
-        ?>
+        require_once("../back/is_login.php");
+        $user = is_login();
+    ?>
     <form action="../back/edit_account.php" method="post" class="md:flex">
         
         <header class="md:h-[100vh-5rem] md:w-[calc(100%/2)] pl-10">
@@ -88,7 +88,6 @@
             
             <div class="flex  items-center">
                 <label for="private" class="text-white mr-10">Privé</label>
-                
                 <?= $user[0]["private"] && $user[0]["private"]!= "NULL" ? "<input type='checkbox' name='private' value='oui' checked>": "<input type='checkbox' name='private' value='oui'>"?>
             </div>
             

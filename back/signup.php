@@ -15,10 +15,9 @@ if(!empty($_POST["email"])&&!empty($_POST["username"])&&!empty($_POST["password"
             exit;
         }
         else{
-            // realpath(dirname(__FILE__) . '/' .)
             $absolute_path_avatar = 'X_logo_2023_(white).png';
             $absolute_path_banner = 'banner.jpg';
-            $hash_password = hash("ripemd160", $password."vive le projet tweet_academy");
+            $hash_password = hash("ripemd160", $password);
             $statement_insert = $pdo->prepare("INSERT INTO user(username,at_user_name,profile_picture,banner,mail,password,birthdate,city) VALUES ('$name', '$username', '$absolute_path_avatar', '$absolute_path_banner', '$email', '$hash_password','$birthday', '$city');");
             $statement_insert->execute();
             header("Location: ../front/login.php");
