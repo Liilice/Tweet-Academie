@@ -27,23 +27,12 @@ window.onload = function () {
   let submit = document.querySelector("#submit");
   submit.addEventListener("click", (event) => {
     let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
     let city = document.getElementById("city").value;
     let bio = document.getElementById("bio").value;
     let private = document.getElementById("private").value;
     let campus = document.getElementById("campus").value;
-
-    if (email) {
-      if (!email.includes("@") || !email.includes(".")) {
-        event.preventDefault();
-        document.getElementById("error_email").innerText = "Manque @ ou .";
-        document.getElementById("error_email").style.display = "block";
-      } else {
-        document.getElementById("error_email").style.display = "none";
-      }
-    }
 
     if (password) {
       if (password.length < 8 || password.length > 20) {

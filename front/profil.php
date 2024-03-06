@@ -82,9 +82,9 @@
                     <li>City :</li>
                     <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["city"]?></li>
                     <li>Campus :</li>
-                    <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["campus"]?$user[0]["campus"]:"Non rensigner"?></li>
+                    <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["campus"]?$user[0]["campus"]:"Non renseigner"?></li>
                     <li>Bio :</li>
-                    <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["bio"]?$user[0]["bio"]:"Non rensigner"?></li>
+                    <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["bio"]?$user[0]["bio"]:"Non renseigner"?></li>
                 </ul>
             </section>
             <section class="privateinfos basis-6/12 flex flex-col">
