@@ -10,7 +10,7 @@ if(!empty($_POST["email"])&&!empty($_POST["password"])){
             header("Location: ../front/error_login.php");
             exit;
         }else{
-            $hash_enter = hash('ripemd160', $password."vive le projet tweet_academy");
+            $hash_enter = hash('ripemd160', $password);
             if($hash_enter == $resultat_check[0]["password"]){
                 session_start();
                 $_SESSION['user_id'] = $resultat_check[0]["id"];
