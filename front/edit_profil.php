@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style><?php include "./css/normalize.css"?></style>
-    <style><?php include "./css/output.css"?></style>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/output.css">
     <link rel="stylesheet" href="./css/style_picture.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script><?php include "./js/picture_change.js"?></script>
+    <script src="./js/picture_change.js"></script>
     <script src="https://kit.fontawesome.com/96249701bf.js" crossorigin="anonymous"></script>
     <title>Editer donnees personnel</title>
   </head>
@@ -58,7 +58,12 @@
             </div>
         </div>
     </nav>
+    <?php 
+            require_once("../back/is_login.php");
+            $user = is_login();
+        ?>
     <form action="../back/edit_account.php" method="post" class="md:flex">
+        
         <header class="md:h-[100vh-5rem] md:w-[calc(100%/2)] pl-10">
             <h1 class="text-2xl font-bold text-white pb-7">Éditer son profil</h1>
             <div class="profile-pic" id="div_profil">
@@ -70,8 +75,6 @@
         <div class="lg:h-[calc(100vh-5rem)] lg:w-[calc(100%/2)] flex flex-col space-y-2 w-full max-w-md">
             <input type="text" name="name" id="name" placeholder="Prenom" class="p-2 rounded-md bg-gray-800 text-white">
             <p id="error_name" class="text-red-600"></p>
-            <input type="email" name="email" id="email" placeholder="Email" class="p-2 rounded-md bg-gray-800 text-white">
-            <p id="error_email" class="text-red-600"></p>
             <input type="text" name="username" id="username" placeholder="Username" class="p-2 rounded-md bg-gray-800 text-white">
             <p id="error_username" class="text-red-600"></p>
             <input type="password" name="password" id="password" placeholder="Password" class="p-2 rounded-md bg-gray-800 text-white">
@@ -80,10 +83,15 @@
             <p id="error_city" class="text-red-600"></p>
             <input type="text" name="bio" id="bio" placeholder="Bio" class="p-2 rounded-md bg-gray-800 text-white">
             <p id="error_bio" class="text-red-600"></p>
-            <input type="text" name="private" id="private" placeholder="Private" class="p-2 rounded-md bg-gray-800 text-white">
-            <p id="error_private" class="text-red-600"></p>
             <input type="text" name="campus" id="campus" placeholder="Campus" class="p-2 rounded-md bg-gray-800 text-white">
             <p id="error_campus" class="text-red-600"></p>
+            
+            <div class="flex  items-center">
+                <label for="private" class="text-white mr-10">Privé</label>
+                
+                <?= $user[0]["private"] && $user[0]["private"]!= "NULL" ? "<input type='checkbox' name='private' value='oui' checked>": "<input type='checkbox' name='private' value='oui'>"?>
+            </div>
+            
             <button type="submit" id="submit" class="p-2 bg-white rounded-md hover:bg-white/80 duration-300">Modifier</button>
         </div>
     </form>
