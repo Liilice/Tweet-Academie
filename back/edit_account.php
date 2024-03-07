@@ -11,10 +11,10 @@
         $file = $_POST["file"] ? $_POST["file"] : $user[0]["profile_picture"];
         $name = $_POST["name"] ? $_POST["name"] : $user[0]["username"];
         $username = $_POST["username"];
-        $password = $_POST["password"] ? hash("ripemd160", $_POST["password"]."vive le projet tweet_academy") : $user[0]["password"];
+        $password = $_POST["password"] ? hash("ripemd160", $_POST["password"]) : $user[0]["password"];
         $city = $_POST["city"] ? $_POST["city"] : $user[0]["city"];
-        $bio = $_POST["bio"] ? $_POST["bio"] : $user[0]["bio"];
-        $campus = $_POST["campus"] ? $_POST["campus"] : $user[0]["campus"];
+        $bio = $_POST["bio"] ? $_POST["bio"] : ($user[0]["bio"]?$user[0]["bio"]:"non renseigner");
+        $campus = $_POST["campus"] ? $_POST["campus"] : ($user[0]["campus"]?$user[0]["campus"]:"non renseigner");
         $private = $_POST["private"];
         if($file && $name && $password && $city && $bio & $campus ){
             if($username){

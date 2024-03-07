@@ -20,12 +20,13 @@ window.onload = function () {
   async function fetch_data() {
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     if (data.length > 0) {
       let container = document.querySelector("#container");
       container.innerHTML = "";
       data.forEach((item) => {
-        console.log(item);
+        let div_container = document.createElement("div");
+        div_container.className =
+          "flex w-full min-h-24 px-4 py-3 border-t border-solid border-gray-500";
         let img = document.createElement("img");
         img.setAttribute("src", "./img/" + item.profile_picture);
         img.className = "h-11 w-11";
@@ -37,9 +38,13 @@ window.onload = function () {
         a_div1.className = "font-normal text-white";
         a_div1.innerHTML =
           item.username +
-          "<span class='text-gray-500'>" +
+          "<span class='text-gray-500 ml-5'>" +
           item.at_user_name +
+          " · " +
+          item.time +
+          " " +
           "</span>";
+
         let i_div1 = document.createElement("i");
         i_div1.className =
           "material-icons-outlined text-gray-500 text-3xl font-bold";
@@ -48,7 +53,27 @@ window.onload = function () {
         let div2 = document.createElement("div");
         div2.className = "text-white text-2xl w-full";
         let p = document.createElement("p");
-        p.innerText = item.content;
+        if (item.content.includes("Retweet")) {
+          let new_content = item.content.replaceAll("Retweet", "");
+          if (item.content.match(/#(\w+)/)) {
+            p.innerHTML =
+              new_content.replace(
+                /#(\w[\w-]*)/g,
+                '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+              ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+          } else {
+            p.innerHTML =
+              new_content +
+              "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+          }
+        } else if (item.content.match(/#(\w+)/)) {
+          p.innerHTML = item.content.replace(
+            /#(\w[\w-]*)/g,
+            '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+          );
+        } else {
+          p.innerHTML = item.content;
+        }
         div2.append(p);
         let div3 = document.createElement("div");
         div3.className = "flex justify-between my-3.5 pr-12";
@@ -56,59 +81,37 @@ window.onload = function () {
         i1.className = "material-icons outlined text-gray-500";
         i1.innerHTML =
           "<span class='material-symbols-outlined'>mode_comment</span>";
-        let i2 = document.createElement("i");
-        i2.className = "material-icons outlined text-gray-500";
-        i2.innerHTML = "<span class='material-symbols-outlined'>sync</span>";
+        let a2 = document.createElement("a");
+        a2.className = "text-gray-500";
+        a2.setAttribute("href", "../back/retweet.php?retweet_id=" + item.id);
+        a2.innerHTML = "<i class='fa-solid fa-retweet '></i>";
         let i3 = document.createElement("i");
         i3.className = "material-icons outlined text-gray-500";
         i3.innerHTML =
           "<span class='material-symbols-outlined'>favorite</span>";
-        div3.append(i1, i2, i3);
+        div3.append(i1, a2, i3);
         div.append(div1, div2, div3);
-        container.append(img, div);
-        // let div1 = document.createElement("div");
-        // div1.className =
-        //   "flex w-full min-h-24 px-4 py-3 border-t border-solid border-gray-500";
-        // let img = document.createElement("img");
-        // img.className = "h-11 w-11";
-        // img.setAttribute("src", "./img/" + item.profile_picture);
-        // let div_s_img = document.createElement("div");
-        // div_s_img.className = "flex flex-col w-full ml-3";
-        // let div_div1 = document.querySelector("div");
-        // div_div1.className = "flex items-start justify-between text-xl";
-        // let a_div1 = document.createElement("a");
-        // a_div1.className = "font-normal text-white";
-        // a_div1.innerHTML =
-        //   item.username +
-        //   "<span class='text-gray-500'>" +
-        //   item.at_user_name +
-        //   "</span>";
-        // let i_a = document.createElement("i");
-        // i_a.className =
-        //   "material-icons-outlined text-gray-500 text-3xl font-bold";
-        // i_a.innerText = item.at_user_name;
-        // div_div1.append(a_div1, i_a);
-        // let div_div2 = document.createElement("div");
-        // div_div2.className = "text-white text-2xl w-full";
-        // let p = document.createElement("p");
-        // p.innerText = item.content;
-        // div_div2.append(p);
-        // let div_div3 = document.createElement("div");
-        // let i1 = document.createElement("i");
-        // i1.className = "material-icons outlined text-gray-500";
-        // i1.innerHTML =
-        //   "<span class='material-symbols-outlined'>mode_comment</span>";
-        // let i2 = document.createElement("i");
-        // i1.className = "material-icons outlined text-gray-500";
-        // i1.innerHTML = "<span class='material-symbols-outlined'>sync</span>";
-        // let i3 = document.createElement("i");
-        // i1.className = "material-icons outlined text-gray-500";
-        // i1.innerHTML =
-        //   "<span class='material-symbols-outlined'>favorite</span>";
-        // div_div3.append(i1, i2, i3);
-        // div_s_img.append(div_div1, div_div2, div_div3);
-        // div1.append(img, div_s_img);
-        // container.append(div1);
+        div_container.append(img, div);
+        container.append(div_container);
+      });
+      let all_link = document.querySelectorAll("a");
+      all_link.forEach((link) => {
+        link.addEventListener("click", () => {
+          // event.preventDefault();
+          // var xhr = new XMLHttpRequest();
+          // xhr.open("POST", "all_specific_hashtag.php", true);
+          // xhr.setRequestHeader(
+          //   "Content-Type",
+          //   "application/x-www-form-urlencoded"
+          // );
+          // xhr.onreadystatechange = function () {
+          //   if (xhr.readyState === 4 && xhr.status === 200) {
+          //     // Traitement de la réponse
+          //     console.log(xhr.responseText);
+          //   }
+          // };
+          // xhr.send("hashtag=" + hashtag);
+        });
       });
     }
   }
