@@ -35,9 +35,9 @@
                 <i class="fa-solid fa-envelope"></i>
                 <span class="ml-4">Message</span>
             </a>
-            <form action="" method="POST" id="" class="flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+            <form method="GET" id="submit_search" class="flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
                 <i class="fa-solid fa-magnifying-glass text-white"></i>
-                <input type="search" name="" id="" class="ml-4" placeholder="Rechercher" />
+                <input type="search" name="" id="search_hashtag" class="ml-4 rounded-full bg-gray-800 text-white mr-5" placeholder="Rechercher" />
             </form>
         </div>
         <a href="./profil.php" class="text-white hover:bg-gray-800 hover:rounded-full text-base flex justify-between items-center py-2 pr-2.5 pl-3.5 mr-2.5">
