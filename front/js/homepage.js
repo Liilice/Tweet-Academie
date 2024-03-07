@@ -3,10 +3,10 @@ window.onload = function () {
   submit.addEventListener("submit", () => {
     // event.preventDefault();
     let textarea = document.querySelector("#tweet").value;
-    if (textarea.length > 130) {
+    if (textarea.length > 140) {
       event.preventDefault();
       document.querySelector("#error_tweet").innerText =
-        "Tweet suppérieru à 130 caractères";
+        "Tweet suppérieur à 140 caractères";
       document.querySelector("#error_tweet").style.display = "block";
     } else if (!textarea) {
       event.preventDefault();
@@ -31,7 +31,7 @@ window.onload = function () {
         img.setAttribute("src", "./img/" + item.profile_picture);
         img.className = "h-11 w-11";
         let div = document.createElement("div");
-        div.className = "flex flex-col w-full ml-3";
+        div.className = "flex flex-col w-full ml-3 ";
         let div1 = document.createElement("div");
         div1.className = "flex items-start justify-between text-xl";
         let a_div1 = document.createElement("a");
@@ -51,7 +51,7 @@ window.onload = function () {
         i_div1.innerText = item.at_user_name;
         div1.append(a_div1);
         let div2 = document.createElement("div");
-        div2.className = "text-white text-2xl w-full";
+        div2.className = "text-white text-2xl";
         let p = document.createElement("p");
         if (item.content.includes("Retweet")) {
           let new_content = item.content.replaceAll("Retweet", "");

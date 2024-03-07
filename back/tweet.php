@@ -13,8 +13,8 @@
             foreach($arr as $key => $value){
                 if(str_starts_with($value, "#")){
                     $statement_hastag_list = $pdo->query("INSERT INTO hashtag_list(hashtag) VALUES ('$value');");
-                    header("Location: ../front/homepage.php");
                 }
             }
+            header("Location: ../front/homepage.php");
         }
     }
