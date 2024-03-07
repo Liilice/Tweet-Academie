@@ -77,8 +77,7 @@
                     </div>
                 </div>
             </form>
-            <div id="container" class="flex flex-col w-full min-h-24 px-4 py-3 border-t border-solid border-gray-500">
-                
+            <div id="container" class="flex flex-col ">
             </div>
         </div>
         <div class="side-feed"></div>
