@@ -1,25 +1,11 @@
 window.onload = function () {
-  let submit = document.querySelector("#submit");
-  submit.addEventListener("submit", () => {
-    // event.preventDefault();
-    let textarea = document.querySelector("#tweet").value;
-    if (textarea.length > 130) {
-      event.preventDefault();
-      document.querySelector("#error_tweet").innerText =
-        "Tweet suppérieru à 130 caractères";
-      document.querySelector("#error_tweet").style.display = "block";
-    } else if (!textarea) {
-      event.preventDefault();
-      document.querySelector("#error_tweet").innerText = "Tweet vide";
-      document.querySelector("#error_tweet").style.display = "block";
-    } else {
-      document.querySelector("#error_tweet").style.display = "none";
-    }
-  });
-  const url = "../back/fetch_tweet.php";
+  let hashtag = new URLSearchParams(window.location.search).get("hashtag");
+  //   console.log(hashtag + "dfdsf");
+  const url = "../back/all_specific_hashtag.php?hashtag=" + hashtag;
   async function fetch_data() {
     let response = await fetch(url);
     let data = await response.json();
+    // console.log(data);
     if (data.length > 0) {
       let container = document.querySelector("#container");
       container.innerHTML = "";
@@ -94,26 +80,6 @@ window.onload = function () {
         div_container.append(img, div);
         container.append(div_container);
       });
-      // let all_link = document.querySelectorAll("a");
-      // all_link.forEach((link) => {
-      //   link.addEventListener("click", (event) => {
-      //     // event.preventDefault();
-      //     let hashtag_name = link.getAttribute("href").split("=")[1];
-      //     var xhr = new XMLHttpRequest();
-      //     xhr.open("POST", "../back/all_specific_hashtag.php", true);
-      //     xhr.setRequestHeader(
-      //       "Content-Type",
-      //       "application/x-www-form-urlencoded"
-      //     );
-      //     xhr.onreadystatechange = function () {
-      //       if (xhr.readyState === 4 && xhr.status === 200) {
-      //         console.log("traitement");
-      //         console.log(xhr.responseText);
-      //       }
-      //     };
-      //     xhr.send("hashtag=" + hashtag_name);
-      //   });
-      // });
     }
   }
   fetch_data();

@@ -90,3 +90,12 @@
 #check:checked ~ .sidebar_menu .btn_two i {
   opacity: 1;
 }
+header {
+  margin-top: 10vh;
+}
+main {
+  margin-top: 10vh;
+}
+.privateinfos {
+  margin-top: 10vh;
+}
