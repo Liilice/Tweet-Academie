@@ -39,6 +39,7 @@ window.onload = function () {
         let div2 = document.createElement("div");
         div2.className = "text-white text-2xl w-full";
         let p = document.createElement("p");
+        p.style.wordWrap = "break-word";
         if (item.content.includes("Retweet")) {
           let new_content = item.content.replaceAll("Retweet", "");
           if (item.content.match(/#(\w+)/)) {

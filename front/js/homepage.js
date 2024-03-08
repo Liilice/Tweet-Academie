@@ -3,10 +3,10 @@ window.onload = function () {
   submit.addEventListener("submit", () => {
     // event.preventDefault();
     let textarea = document.querySelector("#tweet").value;
-    if (textarea.length > 130) {
+    if (textarea.length > 140) {
       event.preventDefault();
       document.querySelector("#error_tweet").innerText =
-        "Tweet suppérieru à 130 caractères";
+        "Tweet suppérieur à 140 caractères";
       document.querySelector("#error_tweet").style.display = "block";
     } else if (!textarea) {
       event.preventDefault();
@@ -26,12 +26,12 @@ window.onload = function () {
       data.forEach((item) => {
         let div_container = document.createElement("div");
         div_container.className =
-          "flex w-full min-h-24 px-4 py-3 border-t border-solid border-gray-500";
+          "flex w-full px-4 py-3 border-t border-solid border-gray-500";
         let img = document.createElement("img");
         img.setAttribute("src", "./img/" + item.profile_picture);
         img.className = "h-11 w-11";
         let div = document.createElement("div");
-        div.className = "flex flex-col w-full ml-3";
+        div.className = "flex flex-col w-full ml-3 ";
         let div1 = document.createElement("div");
         div1.className = "flex items-start justify-between text-xl";
         let a_div1 = document.createElement("a");
@@ -51,8 +51,9 @@ window.onload = function () {
         i_div1.innerText = item.at_user_name;
         div1.append(a_div1);
         let div2 = document.createElement("div");
-        div2.className = "text-white text-2xl w-full";
+        div2.className = "text-white text-2xl";
         let p = document.createElement("p");
+        p.style.wordWrap = "break-word";
         if (item.content.includes("Retweet")) {
           let new_content = item.content.replaceAll("Retweet", "");
           if (item.content.match(/#(\w+)/)) {
@@ -77,10 +78,10 @@ window.onload = function () {
         div2.append(p);
         let div3 = document.createElement("div");
         div3.className = "flex justify-between my-3.5 pr-12";
-        let i1 = document.createElement("i");
-        i1.className = "material-icons outlined text-gray-500";
-        i1.innerHTML =
-          "<span class='material-symbols-outlined'>mode_comment</span>";
+        let a1 = document.createElement("a");
+        a1.className = "text-gray-500 cursor-pointer";
+        a1.setAttribute("href", "./comment?tweet_id=" + item.id);
+        a1.innerHTML = "<i class='fa-regular fa-comment'></i>";
         let a2 = document.createElement("a");
         a2.className = "text-gray-500";
         a2.setAttribute("href", "../back/retweet.php?retweet_id=" + item.id);
@@ -89,32 +90,21 @@ window.onload = function () {
         i3.className = "material-icons outlined text-gray-500";
         i3.innerHTML =
           "<span class='material-symbols-outlined'>favorite</span>";
-        div3.append(i1, a2, i3);
+        div3.append(a1, a2, i3);
         div.append(div1, div2, div3);
         div_container.append(img, div);
         container.append(div_container);
       });
-      // let all_link = document.querySelectorAll("a");
-      // all_link.forEach((link) => {
-      //   link.addEventListener("click", (event) => {
-      //     // event.preventDefault();
-      //     let hashtag_name = link.getAttribute("href").split("=")[1];
-      //     var xhr = new XMLHttpRequest();
-      //     xhr.open("POST", "../back/all_specific_hashtag.php", true);
-      //     xhr.setRequestHeader(
-      //       "Content-Type",
-      //       "application/x-www-form-urlencoded"
-      //     );
-      //     xhr.onreadystatechange = function () {
-      //       if (xhr.readyState === 4 && xhr.status === 200) {
-      //         console.log("traitement");
-      //         console.log(xhr.responseText);
-      //       }
-      //     };
-      //     xhr.send("hashtag=" + hashtag_name);
-      //   });
-      // });
     }
   }
   fetch_data();
+
+  let submit_search = document.querySelector("#submit_search");
+  submit_search.addEventListener("submit", () => {
+    event.preventDefault();
+    let input = document.querySelector("#search_hashtag").value;
+    if (input) {
+      window.location.href = "./hashtags_page.php?hashtag=" + input;
+    }
+  });
 };
