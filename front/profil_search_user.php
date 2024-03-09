@@ -9,8 +9,8 @@
     <script src="https://kit.fontawesome.com/96249701bf.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,1,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    <script src="./js/homepage.js"></script>
-    <title>Homepage</title>
+    <script src="./js/show_pseudo.js"></script>
+    <title>document</title>
 </head>
 <body class="bg-black">
     <?php 
@@ -35,16 +35,6 @@
                 <i class="fa-solid fa-envelope"></i>
                 <span class="ml-4">Message</span>
             </a>
-            <form method="GET" id="submit_search" class="flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
-                <i class="fa-solid fa-magnifying-glass text-white"></i>
-                <input type="search" name="" id="search_hashtag" class="ml-4 rounded-full bg-gray-800 text-white mr-5" placeholder="Rechercher par #" />
-            </form>
-            <p id="error_hashtag" class="text-red-600 ml-5"></p>
-            <form method="GET" id="submit_search_user" class="flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
-                <i class="fa-solid fa-magnifying-glass text-white"></i>
-                <input type="search" name="" id="search_user" class="ml-4 rounded-full bg-gray-800 text-white mr-5" placeholder="Rechercher par @" />
-            </form>
-            <p id="error_pseudo" class="text-red-600 ml-5"></p>
         </div>
         <a href="./profil.php" class="text-white hover:bg-gray-800 hover:rounded-full text-base flex justify-between items-center py-2 pr-2.5 pl-3.5 mr-2.5">
             <img class="w-11 h-11 rounded-full bg-white" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
@@ -60,31 +50,7 @@
     
     <main class="ml-80">
         <div class="flex flex-col w-3/5">
-            <div class="flex justify-between items-center text-white text-2xl px-4 sticky top-0">  
-                <span>Accueil</span>
-                <i class="fa-solid fa-magnifying-glass text-sm"></i>
-            </div>
-            
-            <form action="../back/tweet.php" method="POST" class="flex" id="submit">
-                <img class="h-11 w-11" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
-                <div class="flex flex-col justify-evenly pt-1 w-full ml-3">
-                    <textarea placeholder="Quoi de nouveau ?" name="tweet" id="tweet" cols="30" rows="5"></textarea>
-                    <p id="error_tweet" class="text-red-600"></p>
-                    <div class="flex justify-between items-center h-16 w-full">
-                        <ul class="flex list-none">
-                            <li class="text-white">
-                                <span class="material-symbols-outlined">photo_library</span>  
-                            </li>
-                            <li class="text-white">
-                                <span class="material-symbols-outlined">gif_box</span>
-                            </li>
-                        </ul>
-                        <button type="submit" id="button_tweet" class="text-white bg-blue-700 hover:bg-blue-800 font-bold rounded-full text-sm px-5 py-2.5 me-2 mt-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700" >Tweet</button>
-                    </div>
-                </div>
-            </form>
-            <div id="container" class="flex flex-col ">
-            </div>
+            <div id="container" class="flex flex-col "></div>
         </div>
         <div class="side-feed"></div>
     </main>

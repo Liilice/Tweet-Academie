@@ -1,9 +1,8 @@
 <?php
     $pdo = require_once("database.php");
-    $member = isset($_GET['member']) ? $_GET['member'] : '';
-    if($member){
-        $statement = $pdo->query("SELECT * FROM user WHERE username LIKE '%$member%';");
-        $resultat = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $user = $_GET["user"];
+    $statement_user = $pdo->query("SELECT * FROM user WHERE at_user_name LIKE '$user%';");
+    $resultat_user = $statement_user->fetchAll(PDO::FETCH_ASSOC);
+    if($resultat_user){
+        echo json_encode($resultat_user); 
     }
-    header('Content-Type: application/json');
-    echo json_encode($resultat); 
