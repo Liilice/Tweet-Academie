@@ -1,7 +1,7 @@
 window.onload = function () {
+  // verification champs textarea
   let submit = document.querySelector("#submit");
   submit.addEventListener("submit", () => {
-    // event.preventDefault();
     let textarea = document.querySelector("#tweet").value;
     if (textarea.length > 140) {
       event.preventDefault();
@@ -16,6 +16,8 @@ window.onload = function () {
       document.querySelector("#error_tweet").style.display = "none";
     }
   });
+
+  // partie affichage tweet
   const url = "../back/fetch_tweet.php";
   async function fetch_data() {
     let response = await fetch(url);
@@ -118,6 +120,8 @@ window.onload = function () {
           container.append(div_container);
         }
       });
+
+      // partie affichage reponse sur le click
       let id_response = document.querySelectorAll(".id_response");
       id_response.forEach((response) => {
         response.addEventListener("click", (event) => {
@@ -219,12 +223,27 @@ window.onload = function () {
   }
   fetch_data();
 
+  // rechercher par #
   let submit_search = document.querySelector("#submit_search");
   submit_search.addEventListener("submit", () => {
     event.preventDefault();
     let input = document.querySelector("#search_hashtag").value;
     if (input) {
       window.location.href = "./hashtags_page.php?hashtag=" + input;
+    }
+  });
+
+  // rechercher par @
+  let submit_search_user = document.querySelector("#submit_search_user");
+  submit_search_user.addEventListener("submit", () => {
+    event.preventDefault();
+    let input = document.querySelector("#search_user").value;
+    if (!input.startsWith("@")) {
+      document.querySelector("#error_pseudo").innerText = "Manque @ au debut.";
+    } else if (input.includes(" ")) {
+      document.querySelector("#error_pseudo").innerText = "Retirer les espaces";
+    } else if (input && input.startsWith("@")) {
+      window.location.href = "./search_page_user.php?user=" + input;
     }
   });
 };
