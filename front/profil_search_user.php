@@ -48,9 +48,11 @@
         </a>
     </header>
     
-    <main class="ml-80">
+    <main class="pl-80">
         <div class="flex flex-col w-3/5">
             <div id="container" class="flex flex-col "></div>
+            <h3 class="text-white mt-10 text-center mb-2">POST</h3>
+            <div id="container_post" class="flex flex-col "></div>
         </div>
         <div class="side-feed"></div>
     </main>
