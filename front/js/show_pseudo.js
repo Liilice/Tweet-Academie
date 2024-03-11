@@ -1,6 +1,5 @@
 window.onload = function () {
   let pseudo_id = new URLSearchParams(window.location.search).get("pseudo_id");
-  //   console.log(pseudo_id);
   const url = "../back/profil_consulter.php?pseudo_id=" + pseudo_id;
   async function fetch_data() {
     let response = await fetch(url);
@@ -9,29 +8,32 @@ window.onload = function () {
     if (data.length > 0) {
       // affichage info
       let container = document.querySelector("#container");
-      container.innerHTML = "";
       let banner = document.createElement("img");
       banner.setAttribute("src", "./img/" + data[0].banner);
-      let div = document.createElement("div");
-      div.className = "flex justify-between items-center mx-4";
-      let img_profil = document.createElement("img");
+      let div = document.querySelector("#img_button");
+      let img_profil = document.querySelector("#img");
       img_profil.setAttribute("src", "./img/" + data[0].profile_picture);
-      img_profil.className = "h-1/3 w-1/3";
-      let button_follow = document.createElement("button");
-      button_follow.setAttribute("id", data[0].id);
-      button_follow.className =
-        "border border-solid border-gray-500 py-2 px-4 rounded-2xl bg-white text-black font-bold h-11";
-      button_follow.innerText = "Follow";
-      button_follow.addEventListener("click", (event) => {
-        let id_user_to_follow = button_follow.getAttribute("id");
-        window.location.href =
-          "../back/follow.php?id_user_to_follow=" + id_user_to_follow;
-      });
 
-      div.append(img_profil, button_follow);
-      let div_info = document.createElement("div");
-      let ul = document.createElement("ul");
-      ul.className = "text-white mx-4 text-lg";
+      if (document.querySelector(".follow")) {
+        let button_follow = document.querySelector(".follow");
+        button_follow.setAttribute("id", data[0].id);
+        button_follow.addEventListener("click", (event) => {
+          let id_user_to_follow = button_follow.getAttribute("id");
+          window.location.href =
+              "../back/follow.php?id_user_to_follow=" + id_user_to_follow;
+        });
+      } else if (document.querySelector(".unfollow")) {
+        let button_unfollow = document.querySelector(".unfollow");
+        button_unfollow.setAttribute("id", data[0].id);
+        button_unfollow.addEventListener("click", (event) => {
+          let id_user_to_unfollow = button_unfollow.getAttribute("id");
+          window.location.href =
+              "../back/unfollow.php?id_user_to_unfollow=" + id_user_to_unfollow;
+        });
+      }
+
+      let div_info = document.querySelector("#div_info");
+      let ul = document.querySelector("#ul");
       let li1 = document.createElement("li");
       li1.className = "font-bold text-2xl";
       li1.innerText = data[0].username;
@@ -46,11 +48,11 @@ window.onload = function () {
       let li_city = document.createElement("li");
       li_city.className = "mr-8";
       li_city.innerHTML =
-        "<i class='fa-solid fa-location-dot mr-2'></i>" + data[0].city;
+          "<i class='fa-solid fa-location-dot mr-2'></i>" + data[0].city;
       let li_time = document.createElement("li");
       li_time.innerHTML =
-        "<i class='fa-solid fa-calendar-days mr-2'></i>" +
-        data[0].creation_time;
+          "<i class='fa-solid fa-calendar-days mr-2'></i>" +
+          data[0].creation_time;
       ul_li.append(li_city, li_time);
       li4.append(ul_li);
       let li6 = document.createElement("li");
@@ -75,7 +77,7 @@ window.onload = function () {
         if (item.content) {
           let div_container = document.createElement("div");
           div_container.className =
-            "flex w-full px-4 py-3 border-t border-solid border-gray-500 ";
+              "flex w-full px-4 py-3 border-t border-solid border-gray-500 ";
           let img = document.createElement("img");
           img.setAttribute("src", "./img/" + item.profile_picture);
           img.className = "h-11 w-11";
@@ -86,17 +88,17 @@ window.onload = function () {
           let a_div1 = document.createElement("a");
           a_div1.className = "font-normal text-white";
           a_div1.innerHTML =
-            item.username +
-            "<span class='text-gray-500 ml-5'>" +
-            item.at_user_name +
-            " · " +
-            item.time +
-            " " +
-            "</span>";
+              item.username +
+              "<span class='text-gray-500 ml-5'>" +
+              item.at_user_name +
+              " · " +
+              item.time +
+              " " +
+              "</span>";
 
           let i_div1 = document.createElement("i");
           i_div1.className =
-            "material-icons-outlined text-gray-500 text-3xl font-bold";
+              "material-icons-outlined text-gray-500 text-3xl font-bold";
           i_div1.innerText = item.at_user_name;
           div1.append(a_div1);
           let div2 = document.createElement("div");
@@ -107,19 +109,19 @@ window.onload = function () {
             let new_content = item.content.replaceAll("Retweet", "");
             if (item.content.match(/#(\w+)/)) {
               p.innerHTML =
-                new_content.replace(
-                  /#(\w[\w-]*)/g,
-                  '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
-                ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+                  new_content.replace(
+                      /#(\w[\w-]*)/g,
+                      '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+                  ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             } else {
               p.innerHTML =
-                new_content +
-                "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+                  new_content +
+                  "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             }
           } else if (item.content.match(/#(\w+)/)) {
             p.innerHTML = item.content.replace(
-              /#(\w[\w-]*)/g,
-              '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+                /#(\w[\w-]*)/g,
+                '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
             );
           } else {
             p.innerHTML = item.content;
@@ -136,8 +138,8 @@ window.onload = function () {
           let form = document.createElement("form");
           form.setAttribute("class", "input_form");
           form.setAttribute(
-            "action",
-            "../back/reponse.php?id_tweet=" + item.id
+              "action",
+              "../back/reponse.php?id_tweet=" + item.id
           );
           form.setAttribute("method", "POST");
           form.setAttribute("id", item.id);
@@ -159,7 +161,7 @@ window.onload = function () {
           let i3 = document.createElement("i");
           i3.className = "material-icons outlined text-gray-500";
           i3.innerHTML =
-            "<span class='material-symbols-outlined'>favorite</span>";
+              "<span class='material-symbols-outlined'>favorite</span>";
           div3.append(a1, a2, i3);
           div.append(div1, div2, div3);
           div_container.append(img, div);
