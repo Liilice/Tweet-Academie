@@ -6,7 +6,7 @@
             header("Location : ../front/login.php");
         }else{
             $id_user = $_SESSION['user_id'];
-            $statement_followers = $pdo->query("SELECT * FROM follow JOIN user ON user.id = follow.id_follow WHERE id_user = $id_user;");
+            $statement_followers = $pdo->query("SELECT * FROM follow JOIN user ON user.id = follow.id_user WHERE id_follow = $id_user;");
             $resultat_followers = $statement_followers->fetchAll(PDO::FETCH_ASSOC);
         }
         return $resultat_followers ?? false;
