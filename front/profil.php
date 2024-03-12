@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <i class="fas fa-link"></i>
-                        <a href="./message.php">Message</a>
+                        <a href="./message_selection.php">Message</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-bell"></i>

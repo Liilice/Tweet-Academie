@@ -32,7 +32,7 @@
                 <i class="fa-solid fa-bell"></i>
                 <span class="ml-4">Notification</span>
             </a>
-            <a href="./message.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+            <a href="./message_selection.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
                 <i class="fa-solid fa-envelope"></i>
                 <span class="ml-4">Message</span>
             </a>
