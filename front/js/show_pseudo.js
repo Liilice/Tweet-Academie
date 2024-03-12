@@ -88,7 +88,7 @@ window.onload = function () {
           let a_div1 = document.createElement("a");
           a_div1.className = "font-normal text-white";
           a_div1.innerHTML =
-              item$.username +
+              item.username +
               "<span class='text-gray-500 ml-5'>" +
               item.at_user_name +
               " · " +
