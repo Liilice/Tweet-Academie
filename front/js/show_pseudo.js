@@ -88,7 +88,7 @@ window.onload = function () {
           let a_div1 = document.createElement("a");
           a_div1.className = "font-normal text-white";
           a_div1.innerHTML =
-              item.username +
+              item$.username +
               "<span class='text-gray-500 ml-5'>" +
               item.at_user_name +
               " · " +
@@ -96,6 +96,13 @@ window.onload = function () {
               " " +
               "</span>";
 
+          if (document.querySelector(".message")) {
+            let button_message = document.querySelector(".message");
+            button_message.addEventListener("click", (event) => {
+              window.location.href =
+                  "../back/create_message_instance.php?otherUserAt=" + encodeURIComponent(data[0].at_user_name);
+            });
+          }
           let i_div1 = document.createElement("i");
           i_div1.className =
               "material-icons-outlined text-gray-500 text-3xl font-bold";

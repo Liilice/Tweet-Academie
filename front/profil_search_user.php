@@ -31,7 +31,7 @@ $user = is_login();
             <i class="fa-solid fa-bell"></i>
             <span class="ml-4">Notification</span>
         </a>
-        <a href="./message.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+        <a href="./message_selection.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
             <i class="fa-solid fa-envelope"></i>
             <span class="ml-4">Message</span>
         </a>
@@ -60,7 +60,12 @@ $user = is_login();
                 $statement_followings = $pdo->query("SELECT * FROM follow JOIN user ON user.id = follow.id_follow WHERE id_user = $id_user AND id_follow = $id_follow;");
                 $result_check = $statement_followings->fetchAll(PDO::FETCH_ASSOC);
                 ?>
-                <?=$result_check? "<button class='border border-solid border-gray-500 py-2 px-4 rounded-2xl bg-white text-black font-bold h-11 unfollow'>Unfollow</button>":"<button class='border border-solid border-gray-500 py-2 px-4 rounded-2xl bg-white text-black font-bold h-11 follow'>Follow</button>" ?>
+                <?php if ($result_check): ?>
+                    <button class='border border-solid border-gray-500 py-2 px-4 rounded-2xl bg-white text-black font-bold h-11 unfollow'>Unfollow</button>
+                    <button class='border border-solid border-gray-500 py-2 px-4 rounded-2xl bg-white text-black font-bold h-11 message'>Message</button>
+                <?php else: ?>
+                    <button class='border border-solid border-gray-500 py-2 px-4 rounded-2xl bg-white text-black font-bold h-11 follow'>Follow</button>
+                <?php endif; ?>
             </div>
             <div id="div_info">
                 <ul class="text-white mx-4 text-lg" id="ul"></ul>

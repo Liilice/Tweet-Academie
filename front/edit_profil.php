@@ -40,7 +40,7 @@
                     </li>
                     <li>
                         <i class="fas fa-link"></i>
-                        <a href="./message.php">Message</a>
+                        <a href="./message_selection.php">Message</a>
                     </li>
                     <li>
                         <i class="fa-solid fa-bell"></i>
@@ -51,9 +51,9 @@
                         <a href="./edit_profil.php">Editer</a>
                     </li>
                     <li>
-                        <i class="fa-solid fa-right-from-bracket"></i>                        
+                        <i class="fa-solid fa-right-from-bracket"></i>
                         <a href="../back/logout.php">Déconnexion</a>
-                    </li>  
+                    </li>
                 </ul>
             </div>
         </div>
