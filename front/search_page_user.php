@@ -36,6 +36,11 @@
                 <i class="fa-solid fa-envelope"></i>
                 <span class="ml-4">Message</span>
             </a>
+            <form method="GET" id="submit_search" class="flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+                <i class="fa-solid fa-magnifying-glass text-white"></i>
+                <input type="search" name="" id="search_hashtag" class="ml-4 rounded-full bg-gray-800 text-white mr-5" placeholder="Rechercher par #" />
+            </form>
+            <p id="error_hashtag" class="text-red-600 ml-5"></p>
         </div>
         <a href="./profil.php" class="text-white hover:bg-gray-800 hover:rounded-full text-base flex justify-between items-center py-2 pr-2.5 pl-3.5 mr-2.5">
             <img class="w-11 h-11 rounded-full bg-white" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
@@ -51,10 +56,11 @@
     
     <main class="ml-80">
         <div class="flex flex-col w-3/5">
-            <form action="./search_page_user.php" method="POST" class="flex justify-between items-center text-white text-2xl py-4" id="submit">
-                <input type="search" name="" id="" class="w-full rounded-full bg-gray-800 text-white mr-5" value="<?=$_GET["user"]?>">
+            <form method="GET" class="flex justify-between items-center text-white text-2xl py-4" id="submit_search_user">
+                <input type="search" name="" id="search_user" class="w-full rounded-full bg-gray-800 text-white mr-5" value="<?=$_GET["user"]?>">
                 <i class="fa-solid fa-magnifying-glass text-sm"></i>
             </form>
+            <p id="error_pseudo" class="text-red-600 ml-5"></p>
             <div id="container" class="text-white flex flex-col	ml-4 p-2">
             </div>
         </div>
