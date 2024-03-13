@@ -6,7 +6,6 @@ window.onload = function () {
     let data = await response.json();
     // console.log(data);
     if (data.length > 0) {
-      // affichage info
       let container = document.querySelector("#container");
       let banner = document.createElement("img");
       banner.setAttribute("src", "./img/" + data[0].banner);
