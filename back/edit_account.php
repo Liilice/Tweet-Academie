@@ -21,7 +21,7 @@
                 $statement_user_pseudo = $pdo->query("SELECT at_user_name FROM user WHERE at_user_name LIKE '$username';");
                 $user_pseudo = $statement_user_pseudo->fetchAll(PDO::FETCH_ASSOC);
                 if(!empty($user_pseudo)){
-                    header('Location: ../front/error.php');
+                    header('Location: ../front/edit_account_error.php');
                 }else{
                     $statement_username = $pdo->query("UPDATE user SET at_user_name='$username' WHERE id = $id;");
                     $statement_file = $pdo->query("UPDATE user SET profile_picture='$file' WHERE id = $id;");

@@ -228,7 +228,9 @@ window.onload = function () {
   submit_search.addEventListener("submit", () => {
     event.preventDefault();
     let input = document.querySelector("#search_hashtag").value;
-    if (input) {
+    if (input.startsWith("#")) {
+      document.querySelector("#error_hashtag").innerText = "sans #";
+    } else if (input) {
       window.location.href = "./hashtags_page.php?hashtag=" + input;
     }
   });

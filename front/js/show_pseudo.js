@@ -4,7 +4,7 @@ window.onload = function () {
   async function fetch_data() {
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.length > 0) {
       // affichage info
       let container = document.querySelector("#container");
@@ -13,60 +13,20 @@ window.onload = function () {
       let div = document.querySelector("#img_button");
       let img_profil = document.querySelector("#img");
       img_profil.setAttribute("src", "./img/" + data[0].profile_picture);
-
-      if (document.querySelector(".follow")) {
-        let button_follow = document.querySelector(".follow");
-        button_follow.setAttribute("id", data[0].id);
-        button_follow.addEventListener("click", (event) => {
-          let id_user_to_follow = button_follow.getAttribute("id");
-          window.location.href =
-              "../back/follow.php?id_user_to_follow=" + id_user_to_follow;
-        });
-      } else if (document.querySelector(".unfollow")) {
-        let button_unfollow = document.querySelector(".unfollow");
-        button_unfollow.setAttribute("id", data[0].id);
-        button_unfollow.addEventListener("click", (event) => {
-          let id_user_to_unfollow = button_unfollow.getAttribute("id");
-          window.location.href =
-              "../back/unfollow.php?id_user_to_unfollow=" + id_user_to_unfollow;
-        });
-      }
-
       let div_info = document.querySelector("#div_info");
-      let ul = document.querySelector("#ul");
-      let li1 = document.createElement("li");
-      li1.className = "font-bold text-2xl";
+      let li1 = document.querySelector(".li1");
       li1.innerText = data[0].username;
-      let li2 = document.createElement("li");
-      li2.className = "text-gray-500";
+      let li2 = document.querySelector(".li2");
       li2.innerText = data[0].at_user_name;
-      let li3 = document.createElement("li");
+      let li3 = document.querySelector(".li3");
       li3.innerText = data[0].bio;
-      let li4 = document.createElement("li");
-      let ul_li = document.createElement("ul");
-      ul_li.className = "flex text-gray-500";
-      let li_city = document.createElement("li");
-      li_city.className = "mr-8";
+      let li_city = document.querySelector(".li_city");
       li_city.innerHTML =
-          "<i class='fa-solid fa-location-dot mr-2'></i>" + data[0].city;
-      let li_time = document.createElement("li");
+        "<i class='fa-solid fa-location-dot mr-2'></i>" + data[0].city;
+      let li_time = document.querySelector(".li_time");
       li_time.innerHTML =
-          "<i class='fa-solid fa-calendar-days mr-2'></i>" +
-          data[0].creation_time;
-      ul_li.append(li_city, li_time);
-      li4.append(ul_li);
-      let li6 = document.createElement("li");
-      let ul_foll = document.createElement("ul");
-      ul_foll.className = "flex";
-      let li_following = document.createElement("li");
-      li_following.innerText = "Following";
-      li_following.className = "mr-10";
-      let li_followers = document.createElement("li");
-      li_followers.innerText = "Followers";
-      ul_foll.append(li_following, li_followers);
-      li6.append(ul_foll);
-      ul.append(li1, li2, li3, li4, li6);
-      div_info.append(ul);
+        "<i class='fa-solid fa-calendar-days mr-2'></i>" +
+        data[0].creation_time;
       container.append(banner, div, div_info);
 
       //   affichage post
@@ -77,7 +37,7 @@ window.onload = function () {
         if (item.content) {
           let div_container = document.createElement("div");
           div_container.className =
-              "flex w-full px-4 py-3 border-t border-solid border-gray-500 ";
+            "flex w-full px-4 py-3 border-t border-solid border-gray-500 ";
           let img = document.createElement("img");
           img.setAttribute("src", "./img/" + item.profile_picture);
           img.className = "h-11 w-11";
@@ -88,24 +48,26 @@ window.onload = function () {
           let a_div1 = document.createElement("a");
           a_div1.className = "font-normal text-white";
           a_div1.innerHTML =
-              item$.username +
-              "<span class='text-gray-500 ml-5'>" +
-              item.at_user_name +
-              " · " +
-              item.time +
-              " " +
-              "</span>";
+            item.username +
+            "<span class='text-gray-500 ml-5'>" +
+            item.at_user_name +
+            " · " +
+            item.time +
+            " " +
+            "</span>";
 
           if (document.querySelector(".message")) {
             let button_message = document.querySelector(".message");
             button_message.addEventListener("click", (event) => {
+              console.log("clik");
               window.location.href =
-                  "../back/create_message_instance.php?otherUserAt=" + encodeURIComponent(data[0].at_user_name);
+                "../back/create_message_instance.php?otherUserAt=" +
+                encodeURIComponent(data[0].at_user_name);
             });
           }
           let i_div1 = document.createElement("i");
           i_div1.className =
-              "material-icons-outlined text-gray-500 text-3xl font-bold";
+            "material-icons-outlined text-gray-500 text-3xl font-bold";
           i_div1.innerText = item.at_user_name;
           div1.append(a_div1);
           let div2 = document.createElement("div");
@@ -116,19 +78,19 @@ window.onload = function () {
             let new_content = item.content.replaceAll("Retweet", "");
             if (item.content.match(/#(\w+)/)) {
               p.innerHTML =
-                  new_content.replace(
-                      /#(\w[\w-]*)/g,
-                      '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
-                  ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+                new_content.replace(
+                  /#(\w[\w-]*)/g,
+                  '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+                ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             } else {
               p.innerHTML =
-                  new_content +
-                  "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+                new_content +
+                "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             }
           } else if (item.content.match(/#(\w+)/)) {
             p.innerHTML = item.content.replace(
-                /#(\w[\w-]*)/g,
-                '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+              /#(\w[\w-]*)/g,
+              '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
             );
           } else {
             p.innerHTML = item.content;
@@ -145,8 +107,8 @@ window.onload = function () {
           let form = document.createElement("form");
           form.setAttribute("class", "input_form");
           form.setAttribute(
-              "action",
-              "../back/reponse.php?id_tweet=" + item.id
+            "action",
+            "../back/reponse.php?id_tweet=" + item.id
           );
           form.setAttribute("method", "POST");
           form.setAttribute("id", item.id);
@@ -168,7 +130,7 @@ window.onload = function () {
           let i3 = document.createElement("i");
           i3.className = "material-icons outlined text-gray-500";
           i3.innerHTML =
-              "<span class='material-symbols-outlined'>favorite</span>";
+            "<span class='material-symbols-outlined'>favorite</span>";
           div3.append(a1, a2, i3);
           div.append(div1, div2, div3);
           div_container.append(img, div);
@@ -176,6 +138,23 @@ window.onload = function () {
         } else {
           return;
         }
+      });
+    }
+    if (document.querySelector(".follow")) {
+      let button_follow = document.querySelector(".follow");
+      button_follow.setAttribute("id", data[0].id_user);
+      button_follow.addEventListener("click", (event) => {
+        let id_user_to_follow = button_follow.getAttribute("id");
+        window.location.href =
+          "../back/follow.php?id_user_to_follow=" + id_user_to_follow;
+      });
+    } else if (document.querySelector(".unfollow")) {
+      let button_unfollow = document.querySelector(".unfollow");
+      button_unfollow.setAttribute("id", data[0].id_user);
+      button_unfollow.addEventListener("click", (event) => {
+        let id_user_to_unfollow = button_unfollow.getAttribute("id");
+        window.location.href =
+          "../back/unfollow.php?id_user_to_unfollow=" + id_user_to_unfollow;
       });
     }
   }

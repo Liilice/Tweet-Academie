@@ -7,7 +7,7 @@ if(!empty($_POST["email"])&&!empty($_POST["password"])){
         $statement_check = $pdo->query("SELECT * FROM user WHERE mail LIKE '$email';");
         $resultat_check = $statement_check->fetchAll(PDO::FETCH_ASSOC);
         if(empty($resultat_check)){
-            header("Location: ../front/error_login.php");
+            header("Location: ../front/login_error.php");
             exit;
         }else{
             $hash_enter = hash('ripemd160', $password);
@@ -17,9 +17,9 @@ if(!empty($_POST["email"])&&!empty($_POST["password"])){
                 header('Location: ../front/profil.php');
                 exit;
             }else{
-                header("Location: ../front/error_login.php");
+                header("Location: ../front/login_error.php");
                 exit;
             }
         }
-}
+    }
 }

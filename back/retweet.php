@@ -11,7 +11,7 @@
             $resultat_tweet = $statement_tweet_content->fetchAll(PDO::FETCH_ASSOC);
             foreach ($resultat_tweet as $tweet){
                 if($tweet["id_user"] === $user_id){
-                    echo "Tweeter par la personne\n";
+                    header("Location: ../front/retweet_error.php");
                 }else{
                     $statement_retweet = $pdo->query("INSERT INTO retweet(id_user, id_tweet) VALUES($user_id, $retweet_id);");
                     $statement_tweet_content = $pdo->query("SELECT id_user, content FROM tweet WHERE id = $retweet_id;");
@@ -24,15 +24,14 @@
         }else{
             foreach ($resultat_all_retweet as $all_retweet) {
                 if($all_retweet["id_user"] === $user_id){
-                    echo "deja retwitter\n";
-                    return;
+                    header("Location: ../front/retweet_error.php");
                 }else{
                     $statement_retweet = $pdo->query("INSERT INTO retweet(id_user, id_tweet) VALUES($user_id, $retweet_id);");
                     $statement_tweet_content = $pdo->query("SELECT id_user, content FROM tweet WHERE id = $retweet_id;");
                     $resultat_tweet = $statement_tweet_content->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($resultat_tweet as $tweet){
                         if($tweet["id_user"] === $user_id){
-                            echo "error deja tweeter par la personne\n";
+                            header("Location: ../front/retweet_error.php");
                         }else{
                             $content = $resultat_tweet[0]["content"]."Retweet";
                             $statement_tweet = $pdo->query("INSERT INTO tweet(id_user, content) VALUES ($user_id,'$content');");
