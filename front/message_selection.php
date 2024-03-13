@@ -70,7 +70,7 @@ $conversations = getConversationsForUser($userId);
     } else {
         foreach ($conversations as $convo) {
             echo '<section class="convo_selection">';
-            echo '<h2><a href="./message.php?convoId=' . urlencode($convo['id_convo']) . '">' . htmlspecialchars($convo['convo_name']) . '</a></h2>';
+            echo '<h2><a href="../back/message_instance.php?convoId=' . $convo['id_convo'] . '&convoName=' . $convo['convo_name'] . '">' . htmlspecialchars($convo['convo_name']) . '</a></h2>';
             echo '</section>';
         }
     }
