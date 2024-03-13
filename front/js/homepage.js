@@ -65,6 +65,12 @@ window.onload = function () {
                   /#(\w[\w-]*)/g,
                   '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
                 ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
+            } else if (item.content.match(/@(\w+)/)) {
+              p.innerHTML =
+                new_content.replace(
+                  /@(\w[\w-]*)/g,
+                  '<a href="../back/get_cible_tweet.php?id=@$1">@$1</a>'
+                ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             } else {
               p.innerHTML =
                 new_content +
@@ -74,6 +80,11 @@ window.onload = function () {
             p.innerHTML = item.content.replace(
               /#(\w[\w-]*)/g,
               '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
+            );
+          } else if (item.content.match(/@(\w+)/)) {
+            p.innerHTML = item.content.replace(
+              /@(\w[\w-]*)/g,
+              '<a href="../back/get_cible_tweet.php?id=@$1">@$1</a>'
             );
           } else {
             p.innerHTML = item.content;
