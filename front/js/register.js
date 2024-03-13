@@ -35,6 +35,10 @@ window.onload = function () {
       document.getElementById("error_username").innerText =
         "Veuillez remplir le champ";
       document.getElementById("error_username").style.display = "block";
+    } else if (!username.startsWith("@")) {
+      event.preventDefault();
+      document.querySelector("#error_username").innerText =
+        "Manque @ au debut.";
     } else {
       document.getElementById("error_username").style.display = "none";
     }
@@ -83,20 +87,20 @@ window.onload = function () {
       document.getElementById("error_birthday").innerText =
         "Veuillez remplir le champ";
       document.getElementById("error_birthday").style.display = "block";
-    } else if (diff_year < 18) {
+    } else if (diff_year < 15) {
       event.preventDefault();
       document.getElementById("error_birthday").innerText =
-        "Inscription interdit au moins de 18ans";
+        "Inscription interdit au moins de 15ans";
       document.getElementById("error_birthday").style.display = "block";
-    } else if (diff_year === 18 && diff_month < 0) {
+    } else if (diff_year === 15 && diff_month < 0) {
       event.preventDefault();
       document.getElementById("error_birthday").innerText =
-        "Inscription interdit au moins de 18ans";
+        "Inscription interdit au moins de 15ans";
       document.getElementById("error_birthday").style.display = "block";
-    } else if (diff_year === 18 && diff_month >= 0 && diff_day < 0) {
+    } else if (diff_year === 15 && diff_month >= 0 && diff_day < 0) {
       event.preventDefault();
       document.getElementById("error_birthday").innerText =
-        "Inscription interdit au moins de 18ans";
+        "Inscription interdit au moins de 15ans";
       document.getElementById("error_birthday").style.display = "block";
     } else {
       document.getElementById("error_birthday").style.display = "none";

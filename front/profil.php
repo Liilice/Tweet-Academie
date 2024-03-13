@@ -59,53 +59,18 @@
         <?php 
             require_once("../back/is_login.php");
             $user = is_login();
+            require_once("../back/count_follower_following.php");
+            $id = $user[0]["id"];
+            $count_followers = count_followers($id);
+            $count_followings = count_followings($id);
+                        
         ?>
         <header class="md:h-[calc(100vh-13vh)] md:w-[calc(100%/2-10%)] pl-10">
             <div class="h-[calc(100vh-50vh] w-[calc(100%-40%)]">
                 <img class="rounded-full" src="<?=$user[0]["profile_picture"]?"./img/".$user[0]["profile_picture"]:"./img/X_logo_2023_(white).png"?>" alt="photo de profil">
-            </div>    
-            <!-- <button type="button" class="m-auto text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Followers</button>
-            <button type="button" class="m-auto text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Followings</button> -->
-            
-            <button type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                Followers
-            </button>
-            <div id="crypto-modal" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative p-4 w-full max-w-md max-h-full">
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                Followers List
-                            </h3>
-                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crypto-modal">
-                                <svg class="w-3 h-3" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="p-4 md:p-5">
-                            <?php 
-                                require_once("../back/get_followers.php");
-                                $followers = get_followers();
-                            ?>
-                            <ul class="my-4 space-y-3">
-                            <?php foreach($followers as $key => $follower):?>
-                                <li >
-                                    <a href="#" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
-                                        <img src="./img/<?=$follower["profile_picture"]?>" alt="" class="w-11 h-11">
-                                        <span class="flex-1 ms-3 whitespace-nowrap"><?=$follower["username"]?></span>
-                                        <span class="flex-1 ms-3 whitespace-nowrap"><?=$follower["at_user_name"]?></span>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
-
             <button data-modal-target="select-modal" data-modal-toggle="select-modal" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
-                Followings
+                <?=$count_followers[0]['Count']?> Followings
             </button>
             <div id="select-modal" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative p-4 w-full max-w-md max-h-full">
@@ -123,12 +88,13 @@
                         <div class="p-4 md:p-5">
                             <?php 
                                 require_once("../back/get_followings.php");
-                                $followings = get_followings();
+                                $id_user = $_SESSION['user_id'];
+                                $followings = get_followings($id_user);
                             ?>
                             <ul class="my-4 space-y-3">
                             <?php foreach($followings as $key => $following):?>
                                 <li >
-                                    <a href="#" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                    <a href="./profil_search_user.php?pseudo_id=<?=$following["id_follow"]?>" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <img src="./img/<?=$following["profile_picture"]?>" alt="" class="w-11 h-11">
                                         <span class="flex-1 ms-3 whitespace-nowrap"><?=$following["username"]?></span>
                                         <span class="flex-1 ms-3 whitespace-nowrap"><?=$following["at_user_name"]?></span>
@@ -140,8 +106,43 @@
                     </div>
                 </div>
             </div> 
-
-
+            <button type="button" data-modal-target="crypto-modal" data-modal-toggle="crypto-modal" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700">
+                <?=$count_followings[0]['Count']?> Followers
+            </button>
+            <div id="crypto-modal" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                                Followers List
+                            </h3>
+                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crypto-modal">
+                                <svg class="w-3 h-3" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="p-4 md:p-5">
+                            <?php 
+                                require_once("../back/get_followers.php");
+                                $id_user = $_SESSION['user_id'];
+                                $followers = get_followers($id_user);
+                            ?>
+                            <ul class="my-4 space-y-3">
+                            <?php foreach($followers as $key => $follower):?>
+                                <li >
+                                    <a href="./profil_search_user.php?pseudo_id=<?=$follower["id_user"]?>" class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                        <img src="./img/<?=$follower["profile_picture"]?>" alt="" class="w-11 h-11">
+                                        <span class="flex-1 ms-3 whitespace-nowrap"><?=$follower["username"]?></span>
+                                        <span class="flex-1 ms-3 whitespace-nowrap"><?=$follower["at_user_name"]?></span>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <main class="md:h-[calc(100vh-13vh)] md:w-[calc(100%/2+15%)] flex mr-10">
