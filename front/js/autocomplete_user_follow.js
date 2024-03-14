@@ -8,7 +8,7 @@ xhttp.onreadystatechange = function () {
     });
   }
 };
-xhttp.open("GET", "../back/get_all_user.php", true);
+xhttp.open("GET", "../back/get_user.php", true);
 xhttp.send();
 let result_box = document.querySelector(".result-box");
 let textarea = document.querySelector("#tweet");
@@ -22,6 +22,8 @@ function cleRelachee() {
         return keyword.toLowerCase().includes(valu.toLowerCase());
       });
       display(result);
+    } else {
+      result_box.innerHTML = "";
     }
   });
 }
@@ -38,6 +40,6 @@ function display(result) {
   result_box.innerHTML = "<ul>" + content.join("") + "</ul>";
 }
 function select(list) {
-  console.log(list);
   textarea.value = textarea.value + list.getAttribute("id");
+  result_box.innerHTML = "";
 }

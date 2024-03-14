@@ -42,9 +42,10 @@
             <p id="error_hashtag" class="text-red-600 ml-5"></p>
             <form method="GET" id="submit_search_user" class="flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
                 <i class="fa-solid fa-magnifying-glass text-white"></i>
-                <input type="search" name="" id="search_user" class="ml-4 rounded-full bg-gray-800 text-white mr-5" placeholder="Rechercher par @" />
+                <input type="search" name="" id="search_user" class="ml-4 rounded-full bg-gray-800 text-white mr-5" placeholder="Rechercher par @" autocomplete="off" onKeyUp="keyUp()"/>
             </form>
             <p id="error_pseudo" class="text-red-600 ml-5"></p>
+            <div class="result_box_search text-white"></div>
         </div>
         <a href="./profil.php" class="text-white hover:bg-gray-800 hover:rounded-full text-base flex justify-between items-center py-2 pr-2.5 pl-3.5 mr-2.5">
             <img class="w-11 h-11 rounded-full bg-white" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
@@ -69,9 +70,7 @@
                 <img class="h-11 w-11" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
                 <div class="flex flex-col justify-evenly pt-1 w-full ml-3">
                     <textarea placeholder="Quoi de nouveau ?" name="tweet" id="tweet" cols="30" rows="5" autocomplete="off" onKeyUp="cleRelachee()"></textarea>
-                    <div class="result-box text-white">
-    
-                    </div>
+                    <div class="result-box text-white"></div>
                     <p id="error_tweet" class="text-red-600"></p>
                     <div class="flex justify-between items-center h-16 w-full">
                         <ul class="flex list-none">
@@ -91,7 +90,8 @@
         </div>
         <div class="side-feed"></div>
     </main>
-    <script src="./js/autocomplete.js"></script>
+    <script src="./js/autocomplete_user_follow.js"></script>
+    <script src="./js/autocomplete_all_user.js"></script>
     <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
 </body>
 </html>

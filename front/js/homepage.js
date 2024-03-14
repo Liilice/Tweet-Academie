@@ -204,25 +204,6 @@ window.onload = function () {
                 p.innerHTML = item.content;
               }
               div2.append(p);
-              // let div3 = document.createElement("div");
-              // div3.className = "flex justify-between my-3.5 pr-12";
-              // let a1 = document.createElement("a");
-              // a1.className = "text-gray-500 cursor-pointer id_response";
-              // a1.setAttribute("href", "./comment?tweet_id=" + item.id);
-              // a1.innerHTML = "<i class='fa-regular fa-comment'></i>";
-              // let a2 = document.createElement("a");
-              // a2.className = "text-gray-500";
-              // a2.setAttribute(
-              //   "href",
-              //   "../back/retweet.php?retweet_id=" + item.id
-              // );
-              // a2.innerHTML = "<i class='fa-solid fa-retweet '></i>";
-              // let i3 = document.createElement("i");
-              // i3.className = "material-icons outlined text-gray-500";
-              // i3.innerHTML =
-              //   "<span class='material-symbols-outlined'>favorite</span>";
-              // div3.append(a1, a2, i3);
-              // div.append(div1, div2, div3);
               div.append(div1, div2);
               div_container.append(img, div);
               response.append(div_container);
