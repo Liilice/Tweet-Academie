@@ -57,15 +57,17 @@
     <main class="ml-80">
         <div class="flex flex-col w-3/5">
             <form method="GET" class="flex justify-between items-center text-white text-2xl py-4" id="submit_search_user">
-                <input type="search" name="" id="search_user" class="w-full rounded-full bg-gray-800 text-white mr-5" value="<?=$_GET["user"]?>">
+                <input type="search" name="" id="search_user" class="w-full rounded-full bg-gray-800 text-white mr-5" value="<?=$_GET["user"]?>" autocomplete="off" onKeyUp="keyUp()">
                 <i class="fa-solid fa-magnifying-glass text-sm"></i>
             </form>
             <p id="error_pseudo" class="text-red-600 ml-5"></p>
+            <div class="result_box_search text-white"></div>S
             <div id="container" class="text-white flex flex-col	ml-4 p-2">
             </div>
         </div>
         <div class="side-feed"></div>
     </main>
+    <script src="./js/autocomplete_all_user.js"></script>
     <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
 </body>
 </html>
