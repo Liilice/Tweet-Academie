@@ -233,6 +233,7 @@ window.onload = function () {
     }
   }
   fetch_data();
+  setInterval(fetch_data, 2000);
 
   // rechercher par #
   let submit_search = document.querySelector("#submit_search");

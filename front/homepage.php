@@ -69,9 +69,7 @@
                 <img class="h-11 w-11" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
                 <div class="flex flex-col justify-evenly pt-1 w-full ml-3">
                     <textarea placeholder="Quoi de nouveau ?" name="tweet" id="tweet" cols="30" rows="5" autocomplete="off" onKeyUp="cleRelachee()"></textarea>
-                    <div class="result-box text-white">
-    
-                    </div>
+                    <div class="result-box text-white"></div>
                     <p id="error_tweet" class="text-red-600"></p>
                     <div class="flex justify-between items-center h-16 w-full">
                         <ul class="flex list-none">

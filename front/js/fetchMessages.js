@@ -66,7 +66,7 @@ window.onload = function() {
                 let messageContainer = document.querySelector('.message_container');
                 messageContainer.innerHTML = '';
 
-                messages.forEach( message => {
+                messages.forEach(message => {
                     let messageElement = document.createElement('section');
                     messageElement.classList.add(message.id_user == userId ? 'sent_message' : 'received_message');
                     // console.log("message.id_user", message.id_user)
@@ -86,7 +86,7 @@ window.onload = function() {
 
     fetchMessages();
 
-    setInterval(fetchMessages, 10);
+    setInterval(fetchMessages, 2000);
 
     document.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault();
