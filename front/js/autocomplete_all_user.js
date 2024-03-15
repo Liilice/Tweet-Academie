@@ -29,7 +29,7 @@ function display_all_user(result) {
   let content = result.map((list) => {
     return (
       "<li onClick='select_all_user(this)' id='" +
-      list.split("@").join("") +
+      list +
       "' class='cursor-pointer'>" +
       list +
       "</li>"
@@ -38,6 +38,6 @@ function display_all_user(result) {
   result_box_search.innerHTML = "<ul>" + content.join("") + "</ul>";
 }
 function select_all_user(list) {
-  search_user.value = search_user.value + list.getAttribute("id");
+  search_user.value = list.getAttribute("id");
   result_box_search.innerHTML = "";
 }

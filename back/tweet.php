@@ -36,11 +36,13 @@ if (!isset($_SESSION['user_id'])) {
     }
     if ($tweet) {
         $tweet .= "\n" . $image_path;
-        $statement_tweet = $pdo->query("INSERT INTO tweet(id_user, content) VALUES ($id,'$tweet');");
+        $statement_tweet = $pdo->prepare("INSERT INTO tweet(id_user, content) VALUES (?, ?);");
+        $statement_tweet->execute([$id,$tweet]);
         $arr = explode(" ", $tweet);
         foreach ($arr as $key => $value) {
             if (str_starts_with($value, "#")) {
-                $statement_hastag_list = $pdo->query("INSERT INTO hashtag_list(hashtag) VALUES ('$value');");
+                $statement_hastag_list = $pdo->prepare("INSERT INTO hashtag_list(hashtag) VALUES (?);");
+                $statement_hastag_list->execute([$value]);
             }
         }
         echo json_encode(['image_path' => $image_path]);

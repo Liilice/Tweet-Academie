@@ -22,8 +22,6 @@ function cleRelachee() {
         return keyword.toLowerCase().includes(valu.toLowerCase());
       });
       display(result);
-    } else {
-      result_box.innerHTML = "";
     }
   });
 }
@@ -41,5 +39,4 @@ function display(result) {
 }
 function select(list) {
   textarea.value = textarea.value + list.getAttribute("id");
-  result_box.innerHTML = "";
 }
