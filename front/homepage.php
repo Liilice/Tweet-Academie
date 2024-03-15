@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/96249701bf.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,1,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <script src="./js/picture.js"></script>
     <script src="./js/homepage.js"></script>
     <title>Homepage</title>
 </head>
@@ -66,7 +67,7 @@
                 <i class="fa-solid fa-magnifying-glass text-sm"></i>
             </div>
             
-            <form action="../back/tweet.php" method="POST" class="flex" id="submit">
+            <form action="../back/tweet.php" method="POST" class="flex" id="submit" enctype="multipart/form-data">
                 <img class="h-11 w-11" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
                 <div class="flex flex-col justify-evenly pt-1 w-full ml-3">
                     <textarea placeholder="Quoi de nouveau ?" name="tweet" id="tweet" cols="30" rows="5" autocomplete="off" onKeyUp="cleRelachee()"></textarea>
@@ -75,7 +76,8 @@
                     <div class="flex justify-between items-center h-16 w-full">
                         <ul class="flex list-none">
                             <li class="text-white">
-                                <span class="material-symbols-outlined">photo_library</span>  
+                                <input type="hidden" name="max_file_size" value="250000">
+                                <input id="tweetImage" type="file" name="tweet_image" accept=".png, .jpg, .jpeg">
                             </li>
                             <li class="text-white">
                                 <span class="material-symbols-outlined">gif_box</span>

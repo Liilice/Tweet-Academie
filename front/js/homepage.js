@@ -57,6 +57,23 @@ window.onload = function () {
           div2.className = "text-white text-2xl";
           let p = document.createElement("p");
           p.style.wordWrap = "break-word";
+          let imageUrlMatch = item.content.match(/http[s]?:\/\/[^ ]+\.(jpg|jpeg|png|gif)/i);
+
+          // Partie Image tweet
+          if (imageUrlMatch) {
+            let imageUrl = imageUrlMatch[0];
+            let text = item.content.replace(imageUrl, '');
+            p.innerHTML = text;
+            let imageElement = document.createElement('img');
+            imageElement.src = imageUrl;
+            imageElement.style.width = '50%';
+            div2.appendChild(imageElement);
+          } else {
+            p.innerHTML = item.content;
+          }
+          div2.append(p);
+
+
           if (item.content.includes("Retweet")) {
             let new_content = item.content.replaceAll("Retweet", "");
             if (item.content.match(/#(\w+)/)) {
