@@ -30,7 +30,7 @@ function display(result) {
     return (
       "<li onClick='select(this)' id='" +
       list.split("@").join("") +
-      "' class='cursor-pointer'>" +
+      "' class='cursor-pointer dark:text-black'>" +
       list +
       "</li>"
     );

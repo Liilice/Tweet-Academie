@@ -11,12 +11,12 @@
     <script src="https://kit.fontawesome.com/96249701bf.js" crossorigin="anonymous"></script>
     <title>My Account</title>
 </head>
-<body class="bg-black h-screen">
-    <nav class="main_box ">
+<body class="bg-black h-screen dark:bg-gray-200">
+    <nav class="main_box">
         <input type="checkbox" id="check">
-        <div class="btn_one">
+        <div class="btn_one ">
             <label for="check">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars text-white dark:text-black"></i>
             </label>
         </div>
         <div class="sidebar_menu">
@@ -50,6 +50,13 @@
                         <i class="fa-solid fa-right-from-bracket"></i>                        
                         <a href="../back/logout.php">Déconnexion</a>
                     </li>  
+                    <li class="flex">
+                        <div>
+                            <i class="fa-solid fa-moon moon invisible text-black"></i>
+                            <i class="fa-regular fa-sun sun text-black"></i>
+                        </div>
+                        <p class="ml-5">Theme</p>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -147,7 +154,7 @@
 
         <main class="md:h-[calc(100vh-13vh)] md:w-[calc(100%/2+15%)] flex mr-10">
             <section class="mr-10 basis-6/12">
-                <ul class="p-3 rounded-lg border border-solid border-gray-300 text-white text-md">Public  
+                <ul class="p-3 rounded-lg border border-solid border-gray-300 text-white text-md dark:border-black dark:text-black dark:border-2">Public  
                     <li>User Name :</li>
                     <li class="p-2 rounded-md bg-gray-800 text-white  text-sm"><?=$user[0]["username"]?></li>
                     <li>@ : </li>
@@ -165,7 +172,7 @@
                 </ul>
             </section>
             <section class="privateinfos basis-6/12 flex flex-col">
-                <ul class="p-3 rounded-lg border border-solid border-gray-300 text-white text-md">Private<br>
+                <ul class="p-3 rounded-lg border border-solid border-gray-300 text-white text-md dark:border-black dark:text-black dark:border-2">Private<br>
                     <li>Email :</li>
                     <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["mail"]?></li>
                     <li>Mot de passe</li>
@@ -173,10 +180,11 @@
                     <li>City :</li>
                     <li class="p-2 rounded-md bg-gray-800 text-white text-sm"><?=$user[0]["city"]?></li>
                 </ul>
-                <a href="./edit_profil.php" class="mt-10 p-2 px-4 bg-white opacity-50 rounded-xl hover:bg-white/80 duration-300">Editer son compte</a>
+                <a href="./edit_profil.php" class="mt-10 p-2 px-4 bg-white opacity-50 rounded-xl hover:bg-white/80 duration-300 dark:bg-black dark:text-white dark:border-2">Editer son compte</a>
             </section>
         </main>
     </div>
-<script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
+    <script><?php include "./js/dark_light.js"?></script>
+    <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
 </body>
 </html>

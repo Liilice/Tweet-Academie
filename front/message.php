@@ -18,7 +18,7 @@
             <input type="checkbox" id="check">
             <div class="btn_one">
                 <label for="check">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars text-white"></i>
                 </label>
             </div>
             <div class="sidebar_menu">

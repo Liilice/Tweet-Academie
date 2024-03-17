@@ -12,31 +12,38 @@
     <script src="./js/show_pseudo.js"></script>
     <title>document</title>
 </head>
-<body class="bg-black">
+<body class="bg-black dark:bg-gray-200">
 <?php
 require_once("../back/is_login.php");
 $user = is_login();
 ?>
 <header class="flex flex-col justify-between w-1/4 h-full fixed border-r border-solid border-gray-500">
     <div class="flex flex-col w-full h-3/4 justify-between">
-        <a href="./homepage.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+        <a href="./homepage.php" class="text-white dark:text-black flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
             <i class="fa-solid fa-house"></i>
             <span class="ml-4">Accueil</span>
         </a>
-        <a href="./profil.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+        <a href="./profil.php" class="text-white dark:text-black flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
             <i class="fa-solid fa-user"></i>
             <span class="ml-4">Profil</span>
         </a>
-        <a href="./notification.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+        <a href="./notification.php" class="text-white dark:text-black flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
             <i class="fa-solid fa-bell"></i>
             <span class="ml-4">Notification</span>
         </a>
-        <a href="./message_selection.php" class="text-white flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
+        <a href="./message_selection.php" class="text-white dark:text-black flex items-center text-2xl p-2 pr-6 pl-2 w-fit hover:bg-gray-800 hover:rounded-full ">
             <i class="fa-solid fa-envelope"></i>
             <span class="ml-4">Message</span>
         </a>
     </div>
-    <a href="./profil.php" class="text-white hover:bg-gray-800 hover:rounded-full text-base flex justify-between items-center py-2 pr-2.5 pl-3.5 mr-2.5">
+    <div class="flex">
+        <div>
+            <i class="fa-solid fa-moon moon invisible text-white dark:text-black"></i>
+            <i class="fa-regular fa-sun sun text-white dark:text-black"></i>
+        </div>
+        <p class="ml-5 text-white dark:text-black">Theme</p>
+    </div>
+    <a href="./profil.php" class="text-white dark:text-black hover:bg-gray-800 hover:rounded-full text-base flex justify-between items-center py-2 pr-2.5 pl-3.5 mr-2.5">
         <img class="w-11 h-11 rounded-full bg-white" src="./img/<?=$user[0]["profile_picture"]?>" alt="">
         <div class="flex flex-col basis-3/4	ml-2.5 text-base">
             <span class="font-medium"><?=$user[0]["username"]?></span>
@@ -68,7 +75,7 @@ $user = is_login();
                 <?php endif; ?>
             </div>
             <div id="div_info">
-                <ul class="text-white mx-4 text-lg">
+                <ul class="text-white dark:text-black mx-4 text-lg">
                     <li class="font-bold text-2xl li1"></li>
                     <li class="text-gray-500 li2"></li>
                     <li class="li3"></li>
@@ -169,11 +176,12 @@ $user = is_login();
                 </ul>
             </div>
         </div>
-        <h3 class="text-white mt-10 text-center mb-2">POST</h3>
+        <h3 class="text-white dark:text-black mt-10 text-center mb-2">POST</h3>
         <div id="container_post" class="flex flex-col "></div>
     </div>
     <div class="side-feed"></div>
 </main>
+<script><?php include "./js/dark_light.js"?></script>
 <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
 </body>
 </html>

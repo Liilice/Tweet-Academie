@@ -5,6 +5,7 @@ module.exports = {
     "./front/**/*.{html,js,php}",
     "./node_modules/flowbite/**/*.js",
   ],
+  darkMode: "class",
   theme: {
     extend: {},
   },

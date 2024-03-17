@@ -1,22 +1,4 @@
 window.onload = function () {
-  // verification champs textarea
-  let submit = document.querySelector("#submit");
-  submit.addEventListener("submit", () => {
-    let textarea = document.querySelector("#tweet").value;
-    if (textarea.length > 140) {
-      event.preventDefault();
-      document.querySelector("#error_tweet").innerText =
-        "Tweet suppérieur à 140 caractères";
-      document.querySelector("#error_tweet").style.display = "block";
-    } else if (!textarea) {
-      event.preventDefault();
-      document.querySelector("#error_tweet").innerText = "Tweet vide";
-      document.querySelector("#error_tweet").style.display = "block";
-    } else {
-      document.querySelector("#error_tweet").style.display = "none";
-    }
-  });
-
   // partie affichage tweet
   const url = "../back/fetch_tweet.php";
   async function fetch_data() {
@@ -38,10 +20,10 @@ window.onload = function () {
           let div1 = document.createElement("div");
           div1.className = "flex items-start justify-between text-xl";
           let a_div1 = document.createElement("a");
-          a_div1.className = "font-normal text-white";
+          a_div1.className = "font-normal text-white dark:text-black";
           a_div1.innerHTML =
             item.username +
-            "<span class='text-gray-500 ml-5'>" +
+            "<span class='text-gray-500  ml-5'>" +
             item.at_user_name +
             " · " +
             item.time +
@@ -54,25 +36,26 @@ window.onload = function () {
           i_div1.innerText = item.at_user_name;
           div1.append(a_div1);
           let div2 = document.createElement("div");
-          div2.className = "text-white text-2xl";
+          div2.className = "text-white  dark:text-black text-2xl";
           let p = document.createElement("p");
           p.style.wordWrap = "break-word";
-          let imageUrlMatch = item.content.match(/http[s]?:\/\/[^ ]+\.(jpg|jpeg|png|gif)/i);
+          let imageUrlMatch = item.content.match(
+            /http[s]?:\/\/[^ ]+\.(jpg|jpeg|png|gif)/i
+          );
 
           // Partie Image tweet
           if (imageUrlMatch) {
             let imageUrl = imageUrlMatch[0];
-            let text = item.content.replace(imageUrl, '');
+            let text = item.content.replace(imageUrl, "");
             p.innerHTML = text;
-            let imageElement = document.createElement('img');
+            let imageElement = document.createElement("img");
             imageElement.src = imageUrl;
-            imageElement.style.width = '50%';
+            imageElement.style.width = "50%";
             div2.appendChild(imageElement);
           } else {
             p.innerHTML = item.content;
           }
           div2.append(p);
-
 
           if (item.content.includes("Retweet")) {
             let new_content = item.content.replaceAll("Retweet", "");
@@ -180,7 +163,7 @@ window.onload = function () {
               let div1 = document.createElement("div");
               div1.className = "flex items-start justify-between text-xl";
               let a_div1 = document.createElement("a");
-              a_div1.className = "font-normal text-white";
+              a_div1.className = "font-normal text-white  dark:text-black";
               a_div1.innerHTML =
                 item.username +
                 "<span class='text-gray-500 ml-5'>" +
@@ -195,7 +178,7 @@ window.onload = function () {
               i_div1.innerText = item.at_user_name;
               div1.append(a_div1);
               let div2 = document.createElement("div");
-              div2.className = "text-white text-2xl";
+              div2.className = "text-white  dark:text-black text-2xl";
               let p = document.createElement("p");
               p.style.wordWrap = "break-word";
               if (item.content.includes("Retweet")) {
@@ -231,8 +214,24 @@ window.onload = function () {
     }
   }
   fetch_data();
-  setInterval(fetch_data, 2000);
-
+  // verification champs textarea
+  let submit = document.querySelector("#submit");
+  submit.addEventListener("submit", () => {
+    let textarea = document.querySelector("#tweet").value;
+    if (textarea.length > 140) {
+      event.preventDefault();
+      document.querySelector("#error_tweet").innerText =
+        "Tweet suppérieur à 140 caractères";
+      document.querySelector("#error_tweet").style.display = "block";
+    } else if (!textarea) {
+      event.preventDefault();
+      document.querySelector("#error_tweet").innerText = "Tweet vide";
+      document.querySelector("#error_tweet").style.display = "block";
+    } else {
+      document.querySelector("#error_tweet").style.display = "none";
+      setInterval(fetch_data, 2000);
+    }
+  });
   // rechercher par #
   let submit_search = document.querySelector("#submit_search");
   submit_search.addEventListener("submit", () => {

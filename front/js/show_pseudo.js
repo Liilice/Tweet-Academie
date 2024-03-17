@@ -45,7 +45,7 @@ window.onload = function () {
           let div1 = document.createElement("div");
           div1.className = "flex items-start justify-between text-xl";
           let a_div1 = document.createElement("a");
-          a_div1.className = "font-normal text-white";
+          a_div1.className = "font-normal text-white dark:text-black";
           a_div1.innerHTML =
             item.username +
             "<span class='text-gray-500 ml-5'>" +
@@ -70,7 +70,7 @@ window.onload = function () {
           i_div1.innerText = item.at_user_name;
           div1.append(a_div1);
           let div2 = document.createElement("div");
-          div2.className = "text-white text-2xl";
+          div2.className = "text-white dark:text-black text-2xl";
           let p = document.createElement("p");
           p.style.wordWrap = "break-word";
           if (item.content.includes("Retweet")) {

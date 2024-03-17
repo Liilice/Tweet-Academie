@@ -56,7 +56,6 @@
   display: none;
 }
 .main_box .btn_one i {
-  color: white;
   font-size: 30px;
   font-weight: 700;
   position: absolute;
@@ -100,20 +99,6 @@ main {
   margin-top: 10vh;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .private_message_selection {
   display: flex;
   justify-content: center;
@@ -130,129 +115,121 @@ main {
 }
 
 .convo_selection {
-    width: 20%;
-    color: white;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 20vh;
-    margin-top: 10vh;
-    border: 3px solid white;
-    border-radius: 30%;
+  width: 20%;
+  color: white;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 20vh;
+  margin-top: 10vh;
+  border: 3px solid white;
+  border-radius: 30%;
 }
 
 .no_convo_yet {
-    margin-top: 20vh;
+  margin-top: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 25vh;
   color: white;
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
-
-
-
-
-
-
-
-
-
 .message_page {
-    display: flex;
-    /*background-color: red;*/
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-top: white 3px solid;
-    /*overflow: auto;*/
-    border-radius: 10px;
-    height: calc(100vh - 10vh);
-    color: white;
+  display: flex;
+  /*background-color: red;*/
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-top: white 3px solid;
+  /*overflow: auto;*/
+  border-radius: 10px;
+  height: calc(100vh - 10vh);
+  color: white;
 }
 
 .send_message_section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 13vh;
-    width: 100%;
-    border-top: 3px solid white;
-    border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 13vh;
+  width: 100%;
+  border-top: 3px solid white;
+  border-radius: 10px;
 }
 
 .send_message_section .send_message_button {
-    position: absolute;
-    right: 5%;
-    bottom: 3%;
-    background-color: white;
-    color: black;
-    border-radius: 50px;
-    padding: 10px 20px;
-    margin-left: auto;
+  position: absolute;
+  right: 5%;
+  bottom: 3%;
+  background-color: white;
+  color: black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-left: auto;
 }
 
 .send_message_section .message_input {
-    position: absolute;
-    word-wrap: break-word;
-    bottom: 3%;
-    left: 3%;
-    padding: 1.5vh;
-    background-color: #5d5d5d;
-    color: #dcdcdc;
-    width: 50%;
-    border-radius: 20px;
-    overflow-y: auto;
-    resize: none;
-    max-height: 5vh;
-    white-space: pre-wrap;
+  position: absolute;
+  word-wrap: break-word;
+  bottom: 3%;
+  left: 3%;
+  padding: 1.5vh;
+  background-color: #5d5d5d;
+  color: #dcdcdc;
+  width: 50%;
+  border-radius: 20px;
+  overflow-y: auto;
+  resize: none;
+  max-height: 5vh;
+  white-space: pre-wrap;
 }
 
 .send_message_section .message_input::placeholder {
-    color: #dcdcdc;
+  color: #dcdcdc;
 }
 
 .send_message_section .message_input:focus {
-    border-color: #ffffff;
-    outline: none;
+  border-color: #ffffff;
+  outline: none;
 }
 
 .message_page .message_title {
-    color: white;
-    font-size: 2rem;
-    margin-top: -8.5vh;
+  color: white;
+  font-size: 2rem;
+  margin-top: -8.5vh;
 }
 
 .message_container {
-    /*background-color: red;*/
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    overflow: auto;
-    padding: 1em;
-    height: calc(100vh - 27vh);
+  /*background-color: red;*/
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  overflow: auto;
+  padding: 1em;
+  height: calc(100vh - 27vh);
 }
 
-.sent_message, .received_message {
-    word-wrap: break-word;
-    width: 33%;
-    padding: 1.5vh;
-    margin-bottom: 3vh;
-    border-radius: 20px;
+.sent_message,
+.received_message {
+  word-wrap: break-word;
+  width: 33%;
+  padding: 1.5vh;
+  margin-bottom: 3vh;
+  border-radius: 20px;
 }
 
 .sent_message {
-    align-self: flex-end;
-    background: linear-gradient(to top right, darkblue, #3e8197);
-    color: white;
+  align-self: flex-end;
+  background: linear-gradient(to top right, darkblue, #3e8197);
+  color: white;
 }
 
 .received_message {
-    align-self: flex-start;
-    background: linear-gradient(to top right, #454545, #929292);
-    color: white;
+  align-self: flex-start;
+  background: linear-gradient(to top right, #454545, #929292);
+  color: white;
 }
