@@ -11,12 +11,12 @@
     <script src="https://kit.fontawesome.com/96249701bf.js" crossorigin="anonymous"></script>
     <title>Editer donnees personnel</title>
   </head>
-  <body class="bg-black h-screen">
+  <body class="bg-black h-screen dark:bg-gray-200">
   <nav class="main_box ">
         <input type="checkbox" id="check">
         <div class="btn_one">
             <label for="check">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars text-white dark:text-black"></i>
             </label>
         </div>
         <div class="sidebar_menu">
@@ -54,6 +54,13 @@
                         <i class="fa-solid fa-right-from-bracket"></i>
                         <a href="../back/logout.php">Déconnexion</a>
                     </li>
+                    <li class="flex">
+                        <div>
+                            <i class="fa-solid fa-moon moon invisible text-black"></i>
+                            <i class="fa-regular fa-sun sun text-black"></i>
+                        </div>
+                        <p class="ml-5">Theme</p>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -65,7 +72,7 @@
     <form action="../back/edit_account.php" method="post" class="md:flex">
         
         <header class="md:h-[100vh-5rem] md:w-[calc(100%/2)] pl-10">
-            <h1 class="text-2xl font-bold text-white pb-7">Éditer son profil</h1>
+            <h1 class="text-2xl font-bold text-white pb-7 dark:text-black">Éditer son profil</h1>
             <div class="profile-pic" id="div_profil">
                 <img src="./img/default_avatar.png" alt="avatar" id="avatar" class="bg-white w-full">
                 <input type="file" name="file" id="file">
@@ -87,13 +94,14 @@
             <p id="error_campus" class="text-red-600"></p>
             
             <div class="flex  items-center">
-                <label for="private" class="text-white mr-10">Privé</label>
-                <?= $user[0]["private"] && $user[0]["private"]!= "NULL" ? "<input type='checkbox' name='private' value='oui' checked>": "<input type='checkbox' name='private' value='oui'>"?>
+                <label for="private" class="text-white mr-10 dark:text-black">Privé</label>
+                <?= $user[0]["private"] && $user[0]["private"]!= "NULL" ? "<input type='checkbox' name='private' value='oui' checked>": "<input type='checkbox' class='dark:bg-black' name='private' value='oui'>"?>
             </div>
-            <button type="submit" id="submit" class="p-2 bg-white rounded-md hover:bg-white/80 duration-300">Modifier</button>
+            <button type="submit" id="submit" class="p-2 bg-white rounded-md hover:bg-white/80 duration-300 dark:text-white dark:bg-black">Modifier</button>
             <p class="text-red-600">Username déjà utiliser</p>
         </div>
     </form>
+    <script><?php include "./js/dark_light.js"?></script>
     <script><?php include "../node_modules/flowbite/dist/flowbite.min.js"?></script>
   </body>
 </html>

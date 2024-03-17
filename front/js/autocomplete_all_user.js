@@ -30,7 +30,7 @@ function display_all_user(result) {
     return (
       "<li onClick='select_all_user(this)' id='" +
       list +
-      "' class='cursor-pointer'>" +
+      "' class='cursor-pointer dark:text-black'>" +
       list +
       "</li>"
     );

@@ -14,8 +14,7 @@ if(!empty($_POST["email"])&&!empty($_POST["username"])&&!empty($_POST["password"
         if($resultat_check[0]["mail"] == $email || $resultat_check[0]["at_user_name"] == $username){
             header("Location: ../front/register_error.php");
             exit;
-        }
-        else{
+        }else{
             $absolute_path_avatar = 'X_logo_2023_(white).png';
             $absolute_path_banner = 'banner.jpg';
             $hash_password = hash("ripemd160", $password);
