@@ -44,7 +44,7 @@ window.onload = function () {
           if (item.content.match(/#(\w+)/)) {
             p.innerHTML =
               new_content.replace(
-                /#(\w[\w-]*)/g,
+                /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
                 '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
               ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
           } else {
@@ -54,7 +54,7 @@ window.onload = function () {
           }
         } else if (item.content.match(/#(\w+)/)) {
           p.innerHTML = item.content.replace(
-            /#(\w[\w-]*)/g,
+            /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
             '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
           );
         } else {
@@ -83,7 +83,7 @@ window.onload = function () {
     }
   }
   fetch_data();
-  // rechercher par #
+
   let submit_search = document.querySelector("#submit_search");
   submit_search.addEventListener("submit", () => {
     event.preventDefault();
@@ -95,7 +95,6 @@ window.onload = function () {
     }
   });
 
-  // rechercher par @
   let submit_search_user = document.querySelector("#submit_search_user");
   submit_search_user.addEventListener("submit", () => {
     event.preventDefault();

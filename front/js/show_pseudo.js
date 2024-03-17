@@ -28,11 +28,9 @@ window.onload = function () {
         data[0].creation_time;
       container.append(banner, div, div_info);
 
-      //   affichage post
       let container_post = document.querySelector("#container_post");
       container_post.innerHTML = "";
       data.forEach((item) => {
-        // console.log(item);
         if (item.content) {
           let div_container = document.createElement("div");
           div_container.className =
@@ -78,7 +76,7 @@ window.onload = function () {
             if (item.content.match(/#(\w+)/)) {
               p.innerHTML =
                 new_content.replace(
-                  /#(\w[\w-]*)/g,
+                  /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
                   '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
                 ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             } else {
@@ -88,7 +86,7 @@ window.onload = function () {
             }
           } else if (item.content.match(/#(\w+)/)) {
             p.innerHTML = item.content.replace(
-              /#(\w[\w-]*)/g,
+              /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
               '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
             );
           } else {
@@ -99,7 +97,6 @@ window.onload = function () {
           div3.className = "flex justify-between my-3.5 pr-12";
           let a1 = document.createElement("a");
           a1.className = "text-gray-500 cursor-pointer id_response";
-          // a1.setAttribute("href", "./comment?tweet_id=" + item.id);
           a1.setAttribute("id", item.id);
           a1.innerHTML = "<i class='fa-regular fa-comment'></i>";
 
