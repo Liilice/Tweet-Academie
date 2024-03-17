@@ -1,5 +1,4 @@
 window.onload = function () {
-  // partie affichage tweet
   const url = "../back/fetch_tweet.php";
   async function fetch_data() {
     let response = await fetch(url);
@@ -43,7 +42,6 @@ window.onload = function () {
             /http[s]?:\/\/[^ ]+\.(jpg|jpeg|png|gif)/i
           );
 
-          // Partie Image tweet
           if (imageUrlMatch) {
             let imageUrl = imageUrlMatch[0];
             let text = item.content.replace(imageUrl, "");
@@ -62,13 +60,13 @@ window.onload = function () {
             if (item.content.match(/#(\w+)/)) {
               p.innerHTML =
                 new_content.replace(
-                  /#(\w[\w-]*)/g,
+                  /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
                   '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
                 ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             } else if (item.content.match(/@(\w+)/)) {
               p.innerHTML =
                 new_content.replace(
-                  /@(\w[\w-]*)/g,
+                  /@([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
                   '<a href="../back/get_cible_tweet.php?id=@$1">@$1</a>'
                 ) + "</br><span class='text-gray-500 text-sm'>Retweet</span>";
             } else {
@@ -78,12 +76,12 @@ window.onload = function () {
             }
           } else if (item.content.match(/#(\w+)/)) {
             p.innerHTML = item.content.replace(
-              /#(\w[\w-]*)/g,
+              /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
               '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
             );
           } else if (item.content.match(/@(\w+)/)) {
             p.innerHTML = item.content.replace(
-              /@(\w[\w-]*)/g,
+              /@([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
               '<a href="../back/get_cible_tweet.php?id=@$1">@$1</a>'
             );
           } else {
@@ -94,7 +92,6 @@ window.onload = function () {
           div3.className = "flex justify-between my-3.5 pr-12";
           let a1 = document.createElement("a");
           a1.className = "text-gray-500 cursor-pointer id_response";
-          // a1.setAttribute("href", "./comment?tweet_id=" + item.id);
           a1.setAttribute("id", item.id);
           a1.innerHTML = "<i class='fa-regular fa-comment'></i>";
 
@@ -132,7 +129,6 @@ window.onload = function () {
         }
       });
 
-      // partie affichage reponse sur le click
       let id_response = document.querySelectorAll(".id_response");
       id_response.forEach((response) => {
         response.addEventListener("click", (event) => {
@@ -186,7 +182,7 @@ window.onload = function () {
                 if (item.content.match(/#(\w+)/)) {
                   p.innerHTML =
                     new_content.replace(
-                      /#(\w[\w-]*)/g,
+                      /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
                       '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
                     ) +
                     "</br><span class='text-gray-500 text-sm'>Retweet</span>";
@@ -197,7 +193,7 @@ window.onload = function () {
                 }
               } else if (item.content.match(/#(\w+)/)) {
                 p.innerHTML = item.content.replace(
-                  /#(\w[\w-]*)/g,
+                  /#([a-zA-Z0-9_][a-zA-Z0-9_'-]*)/g,
                   '<a href="./hashtags_page.php?hashtag=$1">#$1</a>'
                 );
               } else {
@@ -214,7 +210,7 @@ window.onload = function () {
     }
   }
   fetch_data();
-  // verification champs textarea
+
   let submit = document.querySelector("#submit");
   submit.addEventListener("submit", () => {
     let textarea = document.querySelector("#tweet").value;
@@ -232,7 +228,7 @@ window.onload = function () {
       setInterval(fetch_data, 2000);
     }
   });
-  // rechercher par #
+
   let submit_search = document.querySelector("#submit_search");
   submit_search.addEventListener("submit", () => {
     event.preventDefault();
@@ -244,7 +240,6 @@ window.onload = function () {
     }
   });
 
-  // rechercher par @
   let submit_search_user = document.querySelector("#submit_search_user");
   submit_search_user.addEventListener("submit", () => {
     event.preventDefault();

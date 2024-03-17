@@ -49,7 +49,6 @@ window.onload = function () {
     container.append(ul);
   }
 
-  // rechercher par #
   let submit_search = document.querySelector("#submit_search");
   submit_search.addEventListener("submit", () => {
     event.preventDefault();
@@ -60,7 +59,7 @@ window.onload = function () {
       window.location.href = "./hashtags_page.php?hashtag=" + input;
     }
   });
-  // rechercher par @
+
   let submit_search_user = document.querySelector("#submit_search_user");
   submit_search_user.addEventListener("submit", () => {
     event.preventDefault();
