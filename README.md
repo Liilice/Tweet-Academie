@@ -50,7 +50,7 @@ Créez une base de données MySQL et importez le fichier `twitter.sql` qui se tr
 ```sql
 CREATE DATABASE tweet_academie;
 USE tweet_academie;
-SOURCE commondatabase.sql;
+SOURCE twitter.sql;
 ```
 
 ### 7. Lancer le Serveur de Développement
