@@ -30,7 +30,7 @@ Clonez le répertoire du projet, installez les dépendances et configurez la bas
 ### 1. Cloner le Répertoire du Projet
 ```bash
 git clone git@github.com:Liilice/Tweet-Academie.git
-cd tweet_academie
+cd Tweet-Academie
 ```
 
 ### 2. Installer les Dépendances JavaScript
